@@ -10,9 +10,7 @@ import Link from 'next/link'
 import { ArrowLeft, Check, CreditCard, Lock } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { PayPalScriptProvider } from '@paypal/react-paypal-js'
-import { getPaymentProcessor } from '@/lib/payment'
-import { Elements } from '@stripe/react-stripe-js'
-import CardPaymentForm from '@/components/checkout/CardPaymentForm'
+import DemoCardPaymentForm from '@/components/checkout/DemoCardPaymentForm'
 import PayPalPaymentForm from '@/components/checkout/PayPalPaymentForm'
 
 type Step = 'shipping' | 'payment' | 'review' | 'success'
@@ -52,7 +50,7 @@ function FloatingInput({ label, type = 'text', value, onChange, required = false
   )
 }
 
-const paymentProcessorPromise = getPaymentProcessor()
+
 
 function CheckoutContent() {
   const { user } = useAuthContext()
@@ -61,7 +59,7 @@ function CheckoutContent() {
   const [step, setStep] = useState<Step>('shipping')
   const [shipping, setShipping] = useState(emptyShipping)
   const [paymentMethod, setPaymentMethod] = useState<'card' | 'paypal' | null>(null)
-  const [clientSecret, setClientSecret] = useState<string | null>(null)
+
   const [processing, setProcessing] = useState(false)
   const [showAuthPrompt, setShowAuthPrompt] = useState(true)
   const [orderId, setOrderId] = useState<string | null>(null)
@@ -108,6 +106,7 @@ function CheckoutContent() {
       paymentId,
       paymentStatus: 'paid',
       status: 'pending',
+      isDemoOrder: true,
       createdAt: serverTimestamp(),
     }
     const docRef = await addDoc(collection(db, 'orders'), orderData)
@@ -126,29 +125,7 @@ function CheckoutContent() {
     return docRef.id
   }
 
-  const handleCardPaymentInit = async () => {
-    setProcessing(true)
-    setError(null)
-    try {
-      const response = await fetch('/api/payment/create-intent', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          amount: orderTotal,
-          customerEmail: shipping.email,
-          customerName: `${shipping.firstName} ${shipping.lastName}`,
-        }),
-      })
-      const data = await response.json()
-      if (data.error) throw new Error(data.error)
-      setClientSecret(data.clientSecret)
-    } catch (err: any) {
-      setError(err.message)
-      toast.error('Failed to initialize payment')
-    } finally {
-      setProcessing(false)
-    }
-  }
+
 
   const handleCardPaymentSuccess = async (paymentReference: string) => {
     setProcessing(true)
@@ -398,7 +375,6 @@ function CheckoutContent() {
                     <button
                       onClick={() => {
                         setPaymentMethod('card')
-                        if (!clientSecret) handleCardPaymentInit()
                       }}
                       className={`p-6 border-2 transition-all duration-200 text-left ${
                         paymentMethod === 'card'
@@ -444,50 +420,12 @@ function CheckoutContent() {
                   </div>
 
                   {/* Payment Forms */}
-                  {paymentMethod === 'card' && clientSecret && (
+                  {paymentMethod === 'card' && (
                     <div className="mb-8">
-                      <Elements
-                        stripe={paymentProcessorPromise}
-                        options={{
-                          clientSecret,
-                          appearance: {
-                            theme: 'night',
-                            variables: {
-                              colorPrimary: '#c9a84c',
-                              colorBackground: '#161616',
-                              colorText: '#f5f0e8',
-                              colorTextSecondary: '#a09888',
-                              colorDanger: '#ef4444',
-                              fontFamily: 'Inter, sans-serif',
-                              fontSizeBase: '14px',
-                              borderRadius: '2px',
-                            },
-                            rules: {
-                              '.Input': {
-                                backgroundColor: '#0d0d0d',
-                                border: '1px solid rgba(245,240,232,0.1)',
-                                color: '#f5f0e8',
-                              },
-                              '.Input:focus': {
-                                border: '1px solid #c9a84c',
-                                boxShadow: 'none',
-                              },
-                              '.Label': {
-                                color: '#a09888',
-                                fontSize: '11px',
-                                letterSpacing: '0.1em',
-                                textTransform: 'uppercase',
-                              },
-                            },
-                          },
-                        }}
-                      >
-                        <CardPaymentForm
-                          amount={orderTotal}
-                          onSuccess={handleCardPaymentSuccess}
-                          onError={(err) => setError(err)}
-                        />
-                      </Elements>
+                      <DemoCardPaymentForm
+                        amount={orderTotal}
+                        onSuccess={handleCardPaymentSuccess}
+                      />
                     </div>
                   )}
 
@@ -560,13 +498,7 @@ function CheckoutContent() {
                       Back
                     </button>
                     <button
-                      onClick={() => {
-                        if (paymentMethod === 'card' && !clientSecret) {
-                          handleCardPaymentInit()
-                        } else {
-                          setStep('payment')
-                        }
-                      }}
+                      onClick={() => setStep('payment')}
                       disabled={processing}
                       className="btn-primary flex-1"
                     >

@@ -113,12 +113,17 @@ export default function AdminOrdersPage() {
                       <p className="font-inter text-[10px] text-gray-600 mt-0.5">{order.email}</p>
                     </td>
                     <td className="px-5 py-4 font-cinzel text-[13px] text-cgc-red font-black">${order.total?.toFixed(2)}</td>
-                    <td className="px-5 py-4">
+                    <td className="px-5 py-4 flex items-center gap-2">
                       <span className={`font-cinzel text-[9px] uppercase tracking-[0.2em] px-2 py-1 ${
                         order.paymentStatus === 'paid' ? 'bg-green-900/30 text-green-400 border border-green-800/50' : 'bg-red-900/30 text-red-400 border border-red-800/50'
                       }`}>
                         {order.paymentStatus}
                       </span>
+                      {(order as any).isDemoOrder && (
+                        <span className="font-cinzel text-[8px] uppercase tracking-[0.2em] px-2 py-1 bg-amber-900/30 text-amber-400 border border-amber-800/50">
+                          DEMO
+                        </span>
+                      )}
                     </td>
                     <td className="px-5 py-4">
                       <span className={`font-cinzel text-[9px] uppercase tracking-[0.2em] px-2 py-1 ${statusColors[order.status] || ''}`}>
