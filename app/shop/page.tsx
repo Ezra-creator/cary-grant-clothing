@@ -245,7 +245,13 @@ function ShopContent() {
 
 export default function ShopPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-cgc-black pt-20 flex items-center justify-center"><p className="font-cinzel text-white uppercase tracking-widest text-sm">Loading Shop...</p></div>}>
+    <Suspense fallback={
+      <div className="min-h-screen bg-cgc-black pt-20 
+        flex items-center justify-center">
+        <p className="font-cinzel text-cgc-gray uppercase 
+          tracking-widest text-sm">Loading...</p>
+      </div>
+    }>
       <ShopContent />
     </Suspense>
   )
