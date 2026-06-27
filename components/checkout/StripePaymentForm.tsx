@@ -62,17 +62,6 @@ export default function StripePaymentForm({
         <PaymentElement
           options={{
             layout: 'tabs',
-            appearance: {
-              theme: 'night',
-              variables: {
-                colorPrimary: '#c9a84c',
-                colorBackground: '#161616',
-                colorText: '#f5f0e8',
-                colorDanger: '#ef4444',
-                fontFamily: 'Inter, sans-serif',
-                borderRadius: '2px',
-              },
-            },
           }}
         />
       </div>
