@@ -12,7 +12,7 @@
     "@grpc/grpc-js": "^1.14.4",
     "@paypal/react-paypal-js": "^10.0.0",
     "@stripe/react-stripe-js": "^6.6.0",
-    "@stripe/stripe-js": "^3.5.0",
+    "@stripe/stripe-js": "^9.5.0",
     "@supabase/supabase-js": "^2.108.1",
     "autoprefixer": "^10.5.0",
     "firebase": "^10.14.1",
