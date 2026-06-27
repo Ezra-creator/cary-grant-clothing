@@ -5,11 +5,10 @@ import {
   collection, query, where, getDocs, updateDoc
 } from 'firebase/firestore'
 
-const processor = new Stripe(process.env.PAYMENT_SECRET_KEY!, {
-  apiVersion: '2026-05-27.dahlia',
-})
-
 export async function POST(request: NextRequest) {
+  const processor = new Stripe(process.env.PAYMENT_SECRET_KEY!, {
+    apiVersion: '2026-05-27.dahlia',
+  })
   const body = await request.text()
   const sig = request.headers.get('stripe-signature')!
 

@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
-const processor = new Stripe(process.env.PAYMENT_SECRET_KEY!, {
-  apiVersion: '2026-05-27.dahlia',
-})
-
 export async function POST(request: NextRequest) {
+  const processor = new Stripe(process.env.PAYMENT_SECRET_KEY!, {
+    apiVersion: '2026-05-27.dahlia',
+  })
   try {
     const { amount, customerEmail, customerName, orderId } =
       await request.json()
