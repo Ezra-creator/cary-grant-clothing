@@ -42,8 +42,8 @@ export default function AdminDashboard() {
   }, [])
 
   const statCards = [
-    { label: 'Total Products', value: stats.products, icon: Package, accent: 'text-[#c9a84c]', border: 'border-[#c9a84c]', bg: 'bg-[#c9a84c]/10' },
-    { label: 'Recent Orders', value: stats.orders, icon: ShoppingBag, accent: 'text-[#c9a84c]', border: 'border-[#c9a84c]', bg: 'bg-[#c9a84c]/10' },
+    { label: 'Total Products', value: stats.products, icon: Package, accent: 'text-[var(--cgc-red)]', border: 'border-[var(--cgc-red)]', bg: 'bg-[var(--cgc-red)]/10' },
+    { label: 'Recent Orders', value: stats.orders, icon: ShoppingBag, accent: 'text-[var(--cgc-red)]', border: 'border-[var(--cgc-red)]', bg: 'bg-[var(--cgc-red)]/10' },
     { label: 'Revenue (Recent)', value: `$${stats.revenue.toFixed(2)}`, icon: TrendingUp, accent: 'text-[#22c55e]', border: 'border-[#22c55e]', bg: 'bg-[#22c55e]/10' },
     { label: 'Pending Orders', value: stats.pending, icon: Clock, accent: 'text-[#f59e0b]', border: 'border-[#f59e0b]', bg: 'bg-[#f59e0b]/10' },
   ]
@@ -52,8 +52,8 @@ export default function AdminDashboard() {
     <div>
       {/* Page Header */}
       <div className="mb-10">
-        <p className="font-cinzel text-[10px] uppercase tracking-[0.5em] text-[#c9a84c] mb-2">Overview</p>
-        <h1 className="font-cinzel text-[28px] text-[#f5f0e8] uppercase tracking-wide">Dashboard</h1>
+        <p className="font-inter text-[10px] tracking-[0.5em] text-[var(--cgc-red)] mb-2">Overview</p>
+        <h1 className="font-inter text-[28px] text-[#f5f0e8]">Dashboard</h1>
       </div>
 
       {/* Stat Cards */}
@@ -68,12 +68,12 @@ export default function AdminDashboard() {
           >
             <div className={`absolute top-0 right-0 w-[80px] h-[80px] ${bg} blur-[40px] pointer-events-none`} />
             <div className="flex items-center justify-between mb-4">
-              <p className="font-cinzel text-[9px] uppercase tracking-[0.4em] text-[#6e6358]">{label}</p>
+              <p className="font-inter text-[9px] tracking-[0.4em] text-[#6e6358]">{label}</p>
               <div className={`w-8 h-8 flex items-center justify-center ${bg} rounded`}>
                 <Icon size={16} className={accent} />
               </div>
             </div>
-            <p className={`font-cinzel text-[32px] font-black ${accent} leading-none`}>
+            <p className={`font-inter text-[32px] font-black ${accent} leading-none`}>
               {loading ? <span className="text-[#6e6358]">—</span> : value}
             </p>
           </motion.div>
@@ -88,8 +88,8 @@ export default function AdminDashboard() {
         className="bg-[#161616] border border-[rgba(245,240,232,0.05)]"
       >
         <div className="flex items-center justify-between px-6 py-5 border-b border-[rgba(201,168,76,0.1)]">
-          <h2 className="font-cinzel text-[11px] uppercase tracking-[0.3em] text-[#f5f0e8]">Recent Orders</h2>
-          <Link href="/admin/orders" className="font-cinzel text-[9px] uppercase tracking-[0.3em] text-[#6e6358] hover:text-[#c9a84c] transition-colors">
+          <h2 className="font-inter text-[11px] tracking-[0.3em] text-[#f5f0e8]">Recent Orders</h2>
+          <Link href="/admin/orders" className="font-inter text-[9px] tracking-[0.3em] text-[#6e6358] hover:text-[var(--cgc-red)] transition-colors">
             View All →
           </Link>
         </div>
@@ -102,7 +102,7 @@ export default function AdminDashboard() {
           </div>
         ) : recentOrders.length === 0 ? (
           <div className="py-16 text-center">
-            <p className="font-cinzel text-[13px] text-[#6e6358] uppercase tracking-widest">No orders yet</p>
+            <p className="font-inter text-[13px] text-[#6e6358]">No orders yet</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
@@ -110,7 +110,7 @@ export default function AdminDashboard() {
               <thead>
                 <tr className="border-b border-white/5">
                   {['Order ID', 'Customer', 'Total', 'Status', 'Date'].map(h => (
-                    <th key={h} className="text-left px-6 py-4 font-cinzel text-[9px] uppercase tracking-[0.3em] text-[#6e6358]">{h}</th>
+                    <th key={h} className="text-left px-6 py-4 font-inter text-[9px] tracking-[0.3em] text-[#6e6358]">{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -119,12 +119,12 @@ export default function AdminDashboard() {
                   <tr key={order.id} className={`border-b border-[rgba(245,240,232,0.05)] hover:bg-[rgba(201,168,76,0.02)] transition-colors ${i % 2 === 0 ? '' : 'bg-white/[0.01]'}`}>
                     <td className="px-6 py-4 font-mono text-[11px] text-[#6e6358]">#{order.id.slice(0, 8)}</td>
                     <td className="px-6 py-4">
-                      <p className="font-cinzel text-[11px] text-[#f5f0e8] uppercase tracking-wide">{order.customerName}</p>
+                      <p className="font-inter text-[11px] text-[#f5f0e8]">{order.customerName}</p>
                       <p className="font-inter text-[10px] text-[#6e6358] mt-0.5">{order.email}</p>
                     </td>
-                    <td className="px-6 py-4 font-cinzel text-[13px] text-[#c9a84c] font-black">${order.total?.toFixed(2)}</td>
+                    <td className="px-6 py-4 font-inter text-[13px] text-[var(--cgc-red)] font-black">${order.total?.toFixed(2)}</td>
                     <td className="px-6 py-4">
-                      <span className={`font-cinzel text-[9px] uppercase tracking-[0.2em] px-3 py-1 ${statusColors[order.status] || 'text-gray-500'}`}>
+                      <span className={`font-inter text-[9px] tracking-[0.2em] px-3 py-1 ${statusColors[order.status] || 'text-gray-500'}`}>
                         {order.status}
                       </span>
                     </td>

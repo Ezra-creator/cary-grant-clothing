@@ -3,21 +3,21 @@ import Link from 'next/link'
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-cgc-black pt-20">
+    <div className="min-h-screen bg-cgc-ink pt-20">
       {/* Hero */}
-      <div className="bg-cgc-surface py-24 text-center border-b border-white/5 relative overflow-hidden">
+      <div className="bg-cgc-ink py-24 text-center border-b border-white/5 relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center opacity-5">
           <Image src="/images/logo.jpg" alt="" width={400} height={400} className="object-contain" />
         </div>
-        <p className="font-cinzel text-cgc-red uppercase tracking-[0.4em] text-xs mb-4 relative z-10">Est. 2002</p>
+        <p className="font-inter text-cgc-red tracking-[0.4em] text-xs mb-4 relative z-10">Est. 2002</p>
         <h1 className="section-heading relative z-10">Our Story</h1>
         <div className="red-underline" />
       </div>
 
       {/* Story */}
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-24">
-        <div className="space-y-8 text-cgc-gray-1 font-inter leading-relaxed text-base md:text-lg">
-          <p className="text-cgc-white text-xl md:text-2xl font-cinzel leading-relaxed">
+        <div className="space-y-8 text-cgc-slate font-inter leading-relaxed text-base md:text-lg">
+          <p className="text-cgc-paper text-xl md:text-2xl font-inter leading-relaxed">
             "I started selling my CG t-shirts and hats from a duffle bag. LOL…"
           </p>
           <div className="w-16 h-px bg-cgc-red" />
@@ -33,7 +33,7 @@ export default function AboutPage() {
           <p>
             I then moved across the street to my current location, 54 Dunlop Street West. This space was much bigger than the previous three combined. And today — we own the building.
           </p>
-          <p className="text-cgc-white font-cinzel text-lg">
+          <p className="text-cgc-paper font-inter text-lg">
             From a duffle bag to owning the building. This is more than clothing. This is legacy.
           </p>
         </div>
@@ -47,8 +47,8 @@ export default function AboutPage() {
             { value: 'Barrie, ON', label: 'Home Base' },
           ].map(stat => (
             <div key={stat.label} className="text-center">
-              <p className="font-cinzel text-cgc-red font-bold text-2xl md:text-3xl">{stat.value}</p>
-              <p className="text-cgc-gray-2 text-xs uppercase tracking-widest mt-2 font-inter">{stat.label}</p>
+              <p className="font-inter text-cgc-red font-bold text-2xl md:text-3xl">{stat.value}</p>
+              <p className="text-cgc-slate text-xs mt-2 font-inter">{stat.label}</p>
             </div>
           ))}
         </div>

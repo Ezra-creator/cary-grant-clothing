@@ -44,7 +44,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <div className="min-h-screen bg-[#0d0d0d] flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <Image src="/images/logo.jpg" alt="CGC" width={48} height={48} className="animate-pulse object-contain" />
-          <p className="font-cinzel text-[#6e6358] uppercase tracking-[0.3em] text-[10px]">Loading...</p>
+          <p className="font-inter text-[#6e6358] tracking-[0.3em] text-[10px]">Loading...</p>
         </div>
       </div>
     )
@@ -65,8 +65,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="flex items-center gap-3 mb-3">
             <Image src="/images/logo.jpg" alt="CGC" width={48} height={48} className="object-contain" />
             <div>
-              <p className="font-cinzel text-[11px] text-[#f5f0e8] uppercase tracking-[0.3em] leading-tight">Cary Grant</p>
-              <p className="font-cinzel text-[8px] text-[#6e6358] uppercase tracking-[0.3em]">Clothing Co.</p>
+              <p className="font-inter text-[11px] text-[#f5f0e8] tracking-[0.3em] leading-tight">Cary Grant</p>
+              <p className="font-inter text-[8px] text-[#6e6358] tracking-[0.3em]">Clothing Co.</p>
             </div>
           </div>
           <div className="h-[1px] bg-white/5 mb-3" />
@@ -82,9 +82,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 key={href}
                 href={href}
                 onClick={() => setSidebarOpen(false)}
-                className={`flex items-center gap-3 h-[48px] px-5 font-cinzel text-[11px] uppercase tracking-[0.2em] transition-all duration-200 relative ${
+                className={`flex items-center gap-3 h-[48px] px-5 font-inter text-[11px] tracking-[0.2em] transition-all duration-200 relative ${
                   isActive
-                    ? 'bg-[rgba(201,168,76,0.08)] text-[#c9a84c] border-l-2 border-[#c9a84c] pl-4'
+                    ? 'bg-[rgba(201,168,76,0.08)] text-[var(--cgc-red)] border-l-2 border-[var(--cgc-red)] pl-4'
                     : 'text-[#6e6358] hover:text-[#f5f0e8] hover:bg-[rgba(245,240,232,0.03)]'
                 }`}
               >
@@ -100,19 +100,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <Link
             href="/"
             target="_blank"
-            className="flex items-center gap-3 h-[40px] px-5 font-cinzel text-[10px] uppercase tracking-[0.2em] text-[#6e6358] hover:text-[#c9a84c] transition-colors"
+            className="flex items-center gap-3 h-[40px] px-5 font-inter text-[10px] tracking-[0.2em] text-[#6e6358] hover:text-[var(--cgc-red)] transition-colors"
           >
             <ExternalLink size={14} />
             View Live Site
           </Link>
           <button
             onClick={handleLogout}
-            className="flex items-center gap-3 h-[40px] px-5 font-cinzel text-[10px] uppercase tracking-[0.2em] text-[#6e6358] hover:text-[#c9a84c] transition-colors w-full"
+            className="flex items-center gap-3 h-[40px] px-5 font-inter text-[10px] tracking-[0.2em] text-[#6e6358] hover:text-[var(--cgc-red)] transition-colors w-full"
           >
             <LogOut size={14} />
             Logout
           </button>
-          <p className="font-cinzel text-[8px] text-[#6e6358] uppercase tracking-[0.3em] px-5 pt-1">v1.0.0</p>
+          <p className="font-inter text-[8px] text-[#6e6358] tracking-[0.3em] px-5 pt-1">v1.0.0</p>
         </div>
       </aside>
 
@@ -129,7 +129,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <button onClick={() => setSidebarOpen(!sidebarOpen)} className="lg:hidden text-[#6e6358] hover:text-[#f5f0e8] transition-colors">
               {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
-            <p className="font-cinzel text-[11px] uppercase tracking-[0.3em] text-[#f5f0e8]">{currentLabel}</p>
+            <p className="font-inter text-[11px] tracking-[0.3em] text-[#f5f0e8]">{currentLabel}</p>
           </div>
           <div className="flex items-center gap-4">
             <div className="hidden md:flex items-center gap-2">

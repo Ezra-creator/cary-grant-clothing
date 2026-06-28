@@ -32,27 +32,27 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-cgc-black flex items-center justify-center px-4">
+    <div className="min-h-screen bg-cgc-ink flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-10">
           <Image src="/images/logo.jpg" alt="CGC" width={80} height={80} className="mx-auto mb-6 object-contain" />
-          <h1 className="font-cinzel text-2xl text-cgc-white uppercase tracking-widest mb-2">Admin Portal</h1>
+          <h1 className="font-inter text-2xl text-cgc-paper mb-2">Admin Portal</h1>
           <p className="text-cgc-gray font-inter text-sm">Cary Grant Clothing — Management</p>
         </div>
 
-        <div className="bg-cgc-surface border border-white/5 p-8">
+        <div className="bg-cgc-ink border border-white/5 p-8">
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray block mb-2">Email</label>
+              <label className="font-inter text-xs text-cgc-gray block mb-2">Email</label>
               <input type="email" value={email} onChange={e => setEmail(e.target.value)}
                 placeholder="admin@carygrantclothing.com" required
-                className="w-full bg-cgc-black border border-white/10 focus:border-cgc-red outline-none px-4 py-3 text-cgc-white font-inter placeholder-cgc-gray/30 transition-colors" />
+                className="w-full bg-cgc-ink border border-white/10 focus:border-cgc-red outline-none px-4 py-3 text-cgc-paper font-inter placeholder-cgc-gray/30 transition-colors" />
             </div>
             <div>
-              <label className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray block mb-2">Password</label>
+              <label className="font-inter text-xs text-cgc-gray block mb-2">Password</label>
               <input type="password" value={password} onChange={e => setPassword(e.target.value)}
                 placeholder="••••••••" required
-                className="w-full bg-cgc-black border border-white/10 focus:border-cgc-red outline-none px-4 py-3 text-cgc-white font-inter placeholder-cgc-gray/30 transition-colors" />
+                className="w-full bg-cgc-ink border border-white/10 focus:border-cgc-red outline-none px-4 py-3 text-cgc-paper font-inter placeholder-cgc-gray/30 transition-colors" />
             </div>
             <button type="submit" disabled={loading}
               className="btn-primary w-full mt-2 disabled:opacity-50">

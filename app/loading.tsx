@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="fixed inset-0 bg-cgc-black z-[9999] flex flex-col items-center justify-center">
+    <div className="fixed inset-0 bg-cgc-ink z-[9999] flex flex-col items-center justify-center">
       {/* Top loading bar */}
       <div className="absolute top-0 left-0 right-0 h-[3px] bg-white/5">
         <div
@@ -21,7 +21,7 @@ export default function Loading() {
           style={{ animation: 'pulse 1.8s ease-in-out infinite' }}
         />
         <p
-          className="font-cinzel text-[10px] uppercase tracking-[0.6em] text-gray-600"
+          className="font-inter text-[10px] tracking-[0.6em] text-gray-600"
           style={{ animation: 'pulse 1.8s ease-in-out infinite 0.2s' }}
         >
           Loading

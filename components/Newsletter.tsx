@@ -29,10 +29,10 @@ export default function Newsletter() {
   }
 
   return (
-    <section className="py-24 bg-cgc-black relative overflow-hidden">
-      {/* Gold glow */}
+    <section className="py-24 bg-cgc-bone relative overflow-hidden">
+      {/* Red glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-96 h-96 bg-[#c9a84c]/5 rounded-full blur-3xl" />
+        <div className="w-96 h-96 bg-cgc-red/5 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-3xl mx-auto px-4 md:px-8 text-center relative z-10">
@@ -41,10 +41,10 @@ export default function Newsletter() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}>
-          <p className="font-cinzel text-[#c9a84c] uppercase tracking-[0.4em] text-xs mb-4">Exclusive Access</p>
-          <h2 className="section-heading mb-4">Join The Movement</h2>
-          <div className="gold-underline mb-8" />
-          <p className="text-cgc-gray-2 font-inter mb-10 leading-relaxed">
+          <p className="font-inter text-cgc-red text-sm font-medium mb-4">Exclusive access</p>
+          <h2 className="section-heading mb-4">Join the movement</h2>
+          <div className="red-underline mb-8" />
+          <p className="text-cgc-slate font-inter mb-10 leading-relaxed">
             Be the first to know about new drops, exclusive offers and CGC events.<br />
             No spam. Just heat.
           </p>
@@ -53,30 +53,30 @@ export default function Newsletter() {
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="bg-cgc-surface border border-[#c9a84c]/30 p-8 rounded">
-              <p className="font-cinzel text-2xl text-cgc-white mb-2">YOU'RE IN ✓</p>
-              <p className="text-cgc-gray-2 font-inter text-sm">Welcome to the CGC family. Watch your inbox.</p>
+              className="bg-cgc-paper border border-cgc-red/30 p-8 rounded-cgc-lg">
+              <p className="font-inter text-2xl text-cgc-ink font-semibold mb-2">You're in ✓</p>
+              <p className="text-cgc-slate font-inter text-sm">Welcome to the CGC family. Watch your inbox.</p>
             </motion.div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-0">
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
                 required
-                className="flex-1 bg-cgc-surface border border-white/10 focus:border-[#c9a84c] outline-none px-6 py-4 text-cgc-white font-inter placeholder-cgc-gray-2/50 transition-colors duration-300"
+                className="flex-1 bg-cgc-paper border border-cgc-ink/10 focus:border-cgc-red outline-none px-6 py-4 text-cgc-ink font-inter placeholder-cgc-slate/50 transition-colors duration-300 rounded-cgc-md"
               />
               <button
                 type="submit"
                 disabled={loading}
-                className="btn-primary disabled:opacity-50 whitespace-nowrap">
+                className="btn-primary disabled:opacity-50 whitespace-nowrap px-8 py-4">
                 {loading ? 'Joining...' : 'Subscribe'}
               </button>
             </form>
           )}
 
-          <p className="text-cgc-gray-2/50 text-xs font-inter mt-4 flex items-center justify-center gap-2">
+          <p className="text-cgc-slate/50 text-xs font-inter mt-4 flex items-center justify-center gap-2">
             🔒 We never share your data. Unsubscribe anytime.
           </p>
         </motion.div>

@@ -9,6 +9,7 @@ import { Product } from '@/types'
 import { Plus, Pencil, Trash2, X, Upload, Loader } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { uploadImageToSupabase } from '@/lib/supabase'
+import SwingTag from '@/components/ui/SwingTag'
 
 const emptyForm = {
   name: '', price: '', category: 'Mens', gender: 'mens',
@@ -175,7 +176,7 @@ export default function AdminProductsPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="font-cinzel text-2xl text-cgc-white uppercase tracking-widest">Products</h1>
+          <h1 className="font-inter text-2xl text-cgc-paper">Products</h1>
           <p className="text-cgc-gray font-inter text-sm mt-1">{products.length} products total</p>
         </div>
         <button onClick={openAdd} className="btn-primary flex items-center gap-2 text-xs">
@@ -186,19 +187,19 @@ export default function AdminProductsPage() {
       {/* Products Table */}
       {loading ? (
         <div className="space-y-3">
-          {[...Array(5)].map((_, i) => <div key={i} className="h-16 bg-cgc-surface animate-pulse" />)}
+          {[...Array(5)].map((_, i) => <div key={i} className="h-16 bg-cgc-ink animate-pulse" />)}
         </div>
       ) : products.length === 0 ? (
-        <div className="bg-cgc-surface border border-white/5 p-16 text-center">
-          <p className="font-cinzel text-cgc-gray uppercase tracking-widest mb-4">No products yet</p>
+        <div className="bg-cgc-ink border border-white/5 p-16 text-center">
+          <p className="font-inter text-cgc-gray mb-4">No products yet</p>
           <button onClick={openAdd} className="btn-primary text-xs">Add Your First Product</button>
         </div>
       ) : (
-        <div className="bg-cgc-surface border border-white/5 overflow-hidden">
+        <div className="bg-cgc-ink border border-white/5 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm font-inter">
               <thead>
-                <tr className="border-b border-white/5 text-cgc-gray font-cinzel text-xs uppercase tracking-widest">
+                <tr className="border-b border-white/5 text-cgc-gray font-inter text-xs">
                   <th className="text-left px-4 py-4">Product</th>
                   <th className="text-left px-4 py-4">Category</th>
                   <th className="text-left px-4 py-4">Price</th>
@@ -212,26 +213,29 @@ export default function AdminProductsPage() {
                   <tr key={p.id} className="border-b border-white/5 hover:bg-white/2 transition-colors">
                     <td className="px-4 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-cgc-black flex-shrink-0 overflow-hidden">
+                        <div className="w-12 h-12 bg-cgc-ink flex-shrink-0 overflow-hidden">
                           {p.images[0]
                             ? <img src={p.images[0]} alt={p.name} className="w-full h-full object-cover" />
                             : <img src="/images/logo.jpg" alt="" className="w-full h-full object-contain p-1" />}
                         </div>
                         <div>
-                          <p className="font-cinzel text-cgc-white text-xs uppercase tracking-wide">{p.name}</p>
+                          <p className="font-inter text-cgc-paper text-xs">{p.name}</p>
                           <p className="text-cgc-gray text-xs mt-0.5">{p.sizes.join(', ')}</p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-4 py-4 text-cgc-gray uppercase text-xs tracking-widest font-cinzel">{p.category}</td>
-                    <td className="px-4 py-4 text-cgc-red font-bold">${p.price}</td>
+                    <td className="px-4 py-4 text-cgc-gray text-xs font-inter">{p.category}</td>
                     <td className="px-4 py-4">
-                      <span className={`px-2 py-1 text-xs font-cinzel uppercase tracking-widest ${p.inStock ? 'bg-green-900/30 text-green-400' : 'bg-red-900/30 text-red-400'}`}>
-                        {p.inStock ? 'In Stock' : 'Sold Out'}
-                      </span>
+                      <SwingTag variant="price">${p.price}</SwingTag>
                     </td>
                     <td className="px-4 py-4">
-                      <span className={`px-2 py-1 text-xs font-cinzel uppercase tracking-widest ${p.featured ? 'bg-amber-900/30 text-amber-400' : 'bg-white/5 text-cgc-gray'}`}>
+                      {p.inStock
+                        ? <SwingTag variant="new">In Stock</SwingTag>
+                        : <SwingTag variant="sold-out">Sold Out</SwingTag>
+                      }
+                    </td>
+                    <td className="px-4 py-4">
+                      <span className={`px-2 py-1 text-xs font-inter ${p.featured ? 'bg-amber-900/30 text-amber-400' : 'bg-white/5 text-cgc-gray'}`}>
                         {p.featured ? 'Yes' : 'No'}
                       </span>
                     </td>
@@ -258,13 +262,13 @@ export default function AdminProductsPage() {
       {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-start justify-center p-4 overflow-y-auto">
-          <div className="bg-cgc-surface border border-white/10 w-full max-w-2xl my-8">
+          <div className="bg-cgc-ink border border-white/10 w-full max-w-2xl my-8">
             {/* Modal Header */}
             <div className="flex items-center justify-between p-6 border-b border-white/10">
-              <h2 className="font-cinzel text-cgc-white uppercase tracking-widest text-sm">
+              <h2 className="font-inter text-cgc-paper text-sm">
                 {editing ? 'Edit Product' : 'Add New Product'}
               </h2>
-              <button onClick={() => setShowModal(false)} className="text-cgc-gray hover:text-cgc-white transition-colors">
+              <button onClick={() => setShowModal(false)} className="text-cgc-gray hover:text-cgc-paper transition-colors">
                 <X size={20} />
               </button>
             </div>
@@ -272,7 +276,7 @@ export default function AdminProductsPage() {
             <div className="p-6 space-y-6">
               {/* Image Upload */}
               <div>
-                <label className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray block mb-3">
+                <label className="font-inter text-xs text-cgc-gray block mb-3">
                   Product Images
                 </label>
                 <label className={`border-2 border-dashed border-white/10 hover:border-cgc-red p-8 flex flex-col items-center justify-center cursor-pointer transition-colors ${uploading ? 'opacity-50 pointer-events-none' : ''}`}>
@@ -281,7 +285,7 @@ export default function AdminProductsPage() {
                   {uploading ? (
                     <div className="text-center">
                       <Loader size={24} className="text-cgc-red animate-spin mx-auto mb-2" />
-                      <p className="font-cinzel text-xs text-cgc-gray uppercase tracking-widest">Uploading {uploadProgress}%</p>
+                      <p className="font-inter text-xs text-cgc-gray">Uploading {uploadProgress}%</p>
                       <div className="w-48 h-1 bg-white/10 mt-2 mx-auto">
                         <div className="h-full bg-cgc-red transition-all" style={{ width: `${uploadProgress}%` }} />
                       </div>
@@ -289,7 +293,7 @@ export default function AdminProductsPage() {
                   ) : (
                     <>
                       <Upload size={24} className="text-cgc-gray mb-2" />
-                      <p className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray">Click to upload images</p>
+                      <p className="font-inter text-xs text-cgc-gray">Click to upload images</p>
                       <p className="text-cgc-gray/50 text-xs mt-1 font-inter">PNG, JPG, WEBP up to 10MB each</p>
                     </>
                   )}
@@ -312,32 +316,32 @@ export default function AdminProductsPage() {
               {/* Name & Price */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray block mb-2">Product Name *</label>
+                  <label className="font-inter text-xs text-cgc-gray block mb-2">Product Name *</label>
                   <input type="text" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
                     placeholder="e.g. CGC Eagle Hoodie"
-                    className="w-full bg-cgc-black border border-white/10 focus:border-cgc-red outline-none px-4 py-3 text-cgc-white font-inter text-sm placeholder-cgc-gray/30 transition-colors" />
+                    className="w-full bg-cgc-ink border border-white/10 focus:border-cgc-red outline-none px-4 py-3 text-cgc-paper font-inter text-sm placeholder-cgc-gray/30 transition-colors" />
                 </div>
                 <div>
-                  <label className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray block mb-2">Price (CAD) *</label>
+                  <label className="font-inter text-xs text-cgc-gray block mb-2">Price (CAD) *</label>
                   <input type="number" value={form.price} onChange={e => setForm({ ...form, price: e.target.value })}
                     placeholder="0.00" min="0" step="0.01"
-                    className="w-full bg-cgc-black border border-white/10 focus:border-cgc-red outline-none px-4 py-3 text-cgc-white font-inter text-sm placeholder-cgc-gray/30 transition-colors" />
+                    className="w-full bg-cgc-ink border border-white/10 focus:border-cgc-red outline-none px-4 py-3 text-cgc-paper font-inter text-sm placeholder-cgc-gray/30 transition-colors" />
                 </div>
               </div>
 
               {/* Category & Gender */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray block mb-2">Category</label>
+                  <label className="font-inter text-xs text-cgc-gray block mb-2">Category</label>
                   <select value={form.category} onChange={e => setForm({ ...form, category: e.target.value })}
-                    className="w-full bg-cgc-black border border-white/10 focus:border-cgc-red outline-none px-4 py-3 text-cgc-white font-inter text-sm transition-colors">
+                    className="w-full bg-cgc-ink border border-white/10 focus:border-cgc-red outline-none px-4 py-3 text-cgc-paper font-inter text-sm transition-colors">
                     {categories.map(c => <option key={c} value={c}>{c}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray block mb-2">Gender</label>
+                  <label className="font-inter text-xs text-cgc-gray block mb-2">Gender</label>
                   <select value={form.gender} onChange={e => setForm({ ...form, gender: e.target.value })}
-                    className="w-full bg-cgc-black border border-white/10 focus:border-cgc-red outline-none px-4 py-3 text-cgc-white font-inter text-sm transition-colors">
+                    className="w-full bg-cgc-ink border border-white/10 focus:border-cgc-red outline-none px-4 py-3 text-cgc-paper font-inter text-sm transition-colors">
                     {genders.map(g => <option key={g} value={g}>{g}</option>)}
                   </select>
                 </div>
@@ -345,22 +349,22 @@ export default function AdminProductsPage() {
 
               {/* Description */}
               <div>
-                <label className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray block mb-2">Description</label>
+                <label className="font-inter text-xs text-cgc-gray block mb-2">Description</label>
                 <textarea rows={3} value={form.description} onChange={e => setForm({ ...form, description: e.target.value })}
                   placeholder="Describe the product..."
-                  className="w-full bg-cgc-black border border-white/10 focus:border-cgc-red outline-none px-4 py-3 text-cgc-white font-inter text-sm placeholder-cgc-gray/30 transition-colors resize-none" />
+                  className="w-full bg-cgc-ink border border-white/10 focus:border-cgc-red outline-none px-4 py-3 text-cgc-paper font-inter text-sm placeholder-cgc-gray/30 transition-colors resize-none" />
               </div>
 
               {/* Sizes */}
               <div>
-                <label className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray block mb-3">Available Sizes</label>
+                <label className="font-inter text-xs text-cgc-gray block mb-3">Available Sizes</label>
                 <div className="flex flex-wrap gap-2">
                   {allSizes.map(size => (
                     <button key={size} type="button" onClick={() => toggleSize(size)}
-                      className={`font-cinzel text-xs uppercase px-3 py-2 border transition-all ${
+                      className={`font-inter text-xs px-3 py-2 border transition-all ${
                         form.sizes.includes(size)
                           ? 'bg-cgc-red border-cgc-red text-white'
-                          : 'border-white/20 text-cgc-gray hover:border-cgc-red hover:text-cgc-white'
+                          : 'border-white/20 text-cgc-gray hover:border-cgc-red hover:text-cgc-paper'
                       }`}>
                       {size}
                     </button>
@@ -370,17 +374,17 @@ export default function AdminProductsPage() {
 
               {/* Colors */}
               <div>
-                <label className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray block mb-3">Colors</label>
+                <label className="font-inter text-xs text-cgc-gray block mb-3">Colors</label>
                 <div className="flex gap-2 mb-2">
                   <input type="text" value={colorInput} onChange={e => setColorInput(e.target.value)}
                     onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), addColor())}
                     placeholder="e.g. Black, Red, White"
-                    className="flex-1 bg-cgc-black border border-white/10 focus:border-cgc-red outline-none px-4 py-2 text-cgc-white font-inter text-sm placeholder-cgc-gray/30 transition-colors" />
+                    className="flex-1 bg-cgc-ink border border-white/10 focus:border-cgc-red outline-none px-4 py-2 text-cgc-paper font-inter text-sm placeholder-cgc-gray/30 transition-colors" />
                   <button type="button" onClick={addColor} className="btn-primary text-xs px-4">Add</button>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {form.colors.map(color => (
-                    <span key={color} className="flex items-center gap-1 bg-cgc-black border border-white/10 px-3 py-1 font-cinzel text-xs text-cgc-gray uppercase tracking-widest">
+                    <span key={color} className="flex items-center gap-1 bg-cgc-ink border border-white/10 px-3 py-1 font-inter text-xs text-cgc-gray">
                       {color}
                       <button onClick={() => removeColor(color)} className="hover:text-cgc-red transition-colors ml-1">
                         <X size={10} />
@@ -397,14 +401,14 @@ export default function AdminProductsPage() {
                     className={`w-10 h-6 rounded-full transition-colors relative ${form.inStock ? 'bg-cgc-red' : 'bg-white/10'}`}>
                     <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${form.inStock ? 'translate-x-5' : 'translate-x-1'}`} />
                   </div>
-                  <span className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray">In Stock</span>
+                  <span className="font-inter text-xs text-cgc-gray">In Stock</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer">
                   <div onClick={() => setForm(prev => ({ ...prev, featured: !prev.featured }))}
                     className={`w-10 h-6 rounded-full transition-colors relative ${form.featured ? 'bg-cgc-red' : 'bg-white/10'}`}>
                     <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${form.featured ? 'translate-x-5' : 'translate-x-1'}`} />
                   </div>
-                  <span className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray">Featured</span>
+                  <span className="font-inter text-xs text-cgc-gray">Featured</span>
                 </label>
               </div>
             </div>

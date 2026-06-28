@@ -57,8 +57,7 @@ export default function StripePaymentForm({
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Stripe Payment Element */}
-      <div className="bg-cgc-surface border border-cgc-gold-border 
-        rounded-sm p-4">
+      <div className="bg-cgc-bone border border-cgc-ink/10 p-4 rounded-sm">
         <PaymentElement
           options={{
             layout: 'tabs',
@@ -68,10 +67,10 @@ export default function StripePaymentForm({
 
       {/* Security Badge */}
       <div className="flex items-center justify-center gap-2 
-        text-cgc-gray-2">
+        text-cgc-slate">
         <Lock size={12} />
-        <span className="font-cinzel text-xs uppercase 
-          tracking-widest">
+        <span className="font-inter text-xs  
+          ">
           Secured by Stripe — 256-bit SSL
         </span>
       </div>
@@ -101,8 +100,8 @@ export default function StripePaymentForm({
         {['VISA', 'MC', 'AMEX', 'DISCOVER'].map(card => (
           <span
             key={card}
-            className="font-cinzel text-xs text-cgc-gray-2 
-              border border-cgc-gray-3 px-2 py-1 tracking-widest">
+            className="font-inter text-xs text-cgc-slate 
+              border border-cgc-hairline px-2 py-1 ">
             {card}
           </span>
         ))}

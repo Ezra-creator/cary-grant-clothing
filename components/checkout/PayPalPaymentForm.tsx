@@ -68,22 +68,22 @@ export default function PayPalPaymentForm({
   if (isPending || processing) {
     return (
       <div className="flex items-center justify-center py-8">
-        <Loader size={24} className="animate-spin text-cgc-gold" />
+        <Loader size={24} className="animate-spin text-[var(--cgc-red)]" />
       </div>
     )
   }
 
   return (
     <div className="space-y-4">
-      <p className="font-cinzel text-xs text-cgc-gray-1 uppercase tracking-widest text-center">
+      <p className="font-inter text-xs text-cgc-slate text-center">
         You will be redirected to PayPal to complete payment
       </p>
 
-      <div className="bg-cgc-surface border border-cgc-gold-border p-4 rounded-sm">
+      <div className="bg-cgc-bone border border-cgc-ink/10 p-4 rounded-sm">
         <PayPalButtons
           style={{
             layout: 'vertical',
-            color: 'gold',
+            color: 'black',
             shape: 'rect',
             label: 'pay',
             height: 48,
@@ -100,8 +100,8 @@ export default function PayPalPaymentForm({
         />
       </div>
 
-      <p className="text-cgc-gray-2 text-xs font-inter text-center">
-        Total: <span className="text-cgc-gold font-bold">${amount.toFixed(2)} CAD</span>
+      <p className="text-cgc-slate text-xs font-inter text-center">
+        Total: <span className="text-[var(--cgc-red)] font-bold">${amount.toFixed(2)} CAD</span>
       </p>
     </div>
   )

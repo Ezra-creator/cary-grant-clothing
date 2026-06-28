@@ -108,7 +108,7 @@ export default function CustomCursor() {
           borderColor: { duration: 0.2 },
           opacity: { duration: 0.2 },
         }}
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-cgc-white bg-transparent pointer-events-none z-[9998]"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-cgc-paper bg-transparent pointer-events-none z-[9998]"
       />
     </>
   )

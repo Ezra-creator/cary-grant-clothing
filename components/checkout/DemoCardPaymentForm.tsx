@@ -39,11 +39,11 @@ export default function DemoCardPaymentForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="border border-cgc-gold-border p-5 
-        bg-cgc-surface space-y-4">
+      <div className="border border-cgc-ink/10 p-5 
+        bg-cgc-bone space-y-4">
         <div>
-          <label className="font-cinzel text-xs uppercase 
-            tracking-widest text-cgc-gray-1 block mb-2">
+          <label className="font-inter text-xs  
+             text-cgc-slate block mb-2">
             Cardholder Name
           </label>
           <input
@@ -52,16 +52,16 @@ export default function DemoCardPaymentForm({
             value={name}
             onChange={e => setName(e.target.value)}
             placeholder="John Smith"
-            className="w-full bg-cgc-black border 
+            className="w-full bg-cgc-ink border 
               border-white/10 focus:border-cgc-gold 
-              outline-none px-4 py-3 text-cgc-white 
+              outline-none px-4 py-3 text-cgc-paper 
               font-inter text-sm transition-colors"
           />
         </div>
 
         <div>
-          <label className="font-cinzel text-xs uppercase 
-            tracking-widest text-cgc-gray-1 block mb-2">
+          <label className="font-inter text-xs  
+             text-cgc-slate block mb-2">
             Card Number
           </label>
           <input
@@ -73,17 +73,17 @@ export default function DemoCardPaymentForm({
             )}
             placeholder="4242 4242 4242 4242"
             maxLength={19}
-            className="w-full bg-cgc-black border 
+            className="w-full bg-cgc-ink border 
               border-white/10 focus:border-cgc-gold 
-              outline-none px-4 py-3 text-cgc-white 
+              outline-none px-4 py-3 text-cgc-paper 
               font-inter text-sm transition-colors"
           />
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="font-cinzel text-xs uppercase 
-              tracking-widest text-cgc-gray-1 block mb-2">
+            <label className="font-inter text-xs  
+               text-cgc-slate block mb-2">
               Expiry Date
             </label>
             <input
@@ -93,15 +93,15 @@ export default function DemoCardPaymentForm({
               onChange={e => setExpiry(e.target.value)}
               placeholder="MM/YY"
               maxLength={5}
-              className="w-full bg-cgc-black border 
+              className="w-full bg-cgc-ink border 
                 border-white/10 focus:border-cgc-gold 
-                outline-none px-4 py-3 text-cgc-white 
+                outline-none px-4 py-3 text-cgc-paper 
                 font-inter text-sm transition-colors"
             />
           </div>
           <div>
-            <label className="font-cinzel text-xs uppercase 
-              tracking-widest text-cgc-gray-1 block mb-2">
+            <label className="font-inter text-xs  
+               text-cgc-slate block mb-2">
               CVV
             </label>
             <input
@@ -111,9 +111,9 @@ export default function DemoCardPaymentForm({
               onChange={e => setCvv(e.target.value)}
               placeholder="123"
               maxLength={3}
-              className="w-full bg-cgc-black border 
+              className="w-full bg-cgc-ink border 
                 border-white/10 focus:border-cgc-gold 
-                outline-none px-4 py-3 text-cgc-white 
+                outline-none px-4 py-3 text-cgc-paper 
                 font-inter text-sm transition-colors"
             />
           </div>
@@ -121,10 +121,10 @@ export default function DemoCardPaymentForm({
       </div>
 
       <div className="flex items-center justify-center gap-2 
-        text-cgc-gray-2">
-        <ShieldCheck size={14} className="text-cgc-gold" />
-        <span className="font-cinzel text-xs uppercase 
-          tracking-widest">
+        text-cgc-slate">
+        <ShieldCheck size={14} className="text-[var(--cgc-red)]" />
+        <span className="font-inter text-xs  
+          ">
           256-bit Encrypted Card Payment
         </span>
       </div>
@@ -152,9 +152,9 @@ export default function DemoCardPaymentForm({
       <div className="flex items-center justify-center gap-3 
         pt-2">
         {['VISA', 'MASTERCARD', 'AMEX'].map(card => (
-          <span key={card} className="font-cinzel text-xs 
-            text-cgc-gray-1 border border-cgc-gray-3 
-            px-2 py-1 tracking-widest">
+          <span key={card} className="font-inter text-xs 
+            text-cgc-slate border border-cgc-hairline 
+            px-2 py-1 ">
             {card}
           </span>
         ))}

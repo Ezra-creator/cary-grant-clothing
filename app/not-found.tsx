@@ -8,7 +8,7 @@ export default function NotFound() {
   useEffect(() => setMounted(true), [])
 
   return (
-    <div className="min-h-screen bg-cgc-black flex items-center justify-center px-4 relative overflow-hidden">
+    <div className="min-h-screen bg-cgc-ink flex items-center justify-center px-4 relative overflow-hidden">
       {/* Animated gradient background */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -27,7 +27,7 @@ export default function NotFound() {
 
       {/* CGC Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-        <span className="font-cinzel text-[30vw] font-black text-white/[0.02] leading-none">CGC</span>
+        <span className="font-inter text-[30vw] font-black text-white/[0.02] leading-none">CGC</span>
       </div>
 
       {/* Content */}
@@ -47,7 +47,7 @@ export default function NotFound() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-cinzel text-[120px] md:text-[160px] font-black text-cgc-red leading-none"
+          className="font-inter text-[120px] md:text-[160px] font-black text-cgc-red leading-none"
         >
           404
         </motion.p>
@@ -56,7 +56,7 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.25 }}
-          className="font-cinzel text-[24px] text-white uppercase tracking-[0.3em] mb-4"
+          className="font-inter text-[24px] text-white tracking-[0.3em] mb-4"
         >
           Page Not Found
         </motion.h1>
@@ -78,13 +78,13 @@ export default function NotFound() {
         >
           <Link
             href="/"
-            className="bg-cgc-red hover:bg-cgc-red-hover text-white font-cinzel text-[12px] uppercase tracking-[0.3em] px-8 py-4 transition-colors"
+            className="bg-cgc-red hover:bg-cgc-red-hover text-white font-inter text-[12px] tracking-[0.3em] px-8 py-4 transition-colors"
           >
             Go Home
           </Link>
           <Link
             href="/shop"
-            className="border border-white/20 hover:border-white/50 text-white font-cinzel text-[12px] uppercase tracking-[0.3em] px-8 py-4 transition-colors"
+            className="border border-white/20 hover:border-white/50 text-white font-inter text-[12px] tracking-[0.3em] px-8 py-4 transition-colors"
           >
             Shop Now
           </Link>

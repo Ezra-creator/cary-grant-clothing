@@ -63,36 +63,36 @@ function ShopContent() {
   }, [selectedCategory, selectedSize, sortBy, products])
 
   return (
-    <div className="min-h-screen bg-cgc-black pt-20">
+    <div className="min-h-screen bg-cgc-paper pt-20">
       
       {/* Hero Banner */}
-      <div className="relative h-[280px] bg-cgc-surface overflow-hidden flex flex-col items-center justify-center">
+      <div className="relative h-[280px] bg-cgc-bone overflow-hidden flex flex-col items-center justify-center">
         {/* Noise overlay */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url(/images/noise.png)', backgroundRepeat: 'repeat' }} />
         
         {/* CGC Watermark */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-          <span className="font-cinzel text-[300px] font-black text-white/[0.04] leading-none select-none">
+          <span className="font-inter text-[300px] font-black text-cgc-ink/[0.04] leading-none select-none">
             CGC
           </span>
         </div>
 
         <div className="relative z-10 flex flex-col items-center text-center">
-          <p className="font-cinzel text-[10px] text-gray-400 uppercase tracking-[0.3em] mb-4">
-            <span className="hover:text-white cursor-pointer transition-colors" onClick={() => window.location.href='/'}>Home</span> / Shop
+          <p className="font-inter text-sm font-medium text-cgc-slate mb-4">
+            <span className="hover:text-cgc-ink cursor-pointer transition-colors" onClick={() => window.location.href='/'}>Home</span> / Shop
           </p>
-          <h1 className="h1 text-[72px] leading-none uppercase">
-            Shop All
+          <h1 className="h1 text-[72px] text-cgc-ink leading-none">
+            Shop all
           </h1>
           <div className="w-[60px] h-[2px] bg-cgc-red my-6" />
-          <p className="font-cinzel text-[11px] text-gray-400 uppercase tracking-[0.3em]">
-            {filtered.length} Products
+          <p className="font-inter text-sm text-cgc-slate">
+            {filtered.length} products
           </p>
         </div>
       </div>
 
       {/* Sticky Filter Bar */}
-      <div className="sticky top-[80px] z-30 bg-cgc-black/95 backdrop-blur-[20px] border-b border-white/5 h-[64px] w-full">
+      <div className="sticky top-[80px] z-30 bg-cgc-paper/95 backdrop-blur-[20px] border-b border-cgc-ink/5 h-[64px] w-full">
         <div className="max-w-[1400px] mx-auto h-full flex items-center justify-between px-4 md:px-8 gap-4">
           
           {/* Category Pills (Left) */}
@@ -101,13 +101,13 @@ function ShopContent() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`font-cinzel text-[10px] uppercase tracking-[0.3em] px-[20px] py-[8px] whitespace-nowrap transition-all duration-200 ${
+                className={`font-inter text-sm capitalize rounded-cgc-md px-[20px] py-[8px] whitespace-nowrap transition-all duration-200 ${
                   selectedCategory === cat
-                    ? 'bg-cgc-red border-cgc-red text-cgc-white'
-                    : 'bg-transparent border-white/[0.15] text-white/50 hover:border-white/40'
+                    ? 'bg-cgc-red border-cgc-red text-white'
+                    : 'bg-transparent border border-cgc-ink/[0.15] text-cgc-ink/50 hover:border-cgc-ink/40'
                 }`}
               >
-                {cat}
+                {cat.toLowerCase()}
               </button>
             ))}
           </div>
@@ -117,8 +117,8 @@ function ShopContent() {
             <select
               value={sortBy}
               onChange={e => setSortBy(e.target.value)}
-              className="bg-cgc-black border border-white/[0.15] text-white/80 font-cinzel text-[10px] uppercase tracking-[0.3em] px-4 py-2 outline-none focus:border-cgc-red transition-colors cursor-pointer appearance-none pr-8 relative"
-              style={{ backgroundImage: 'url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '8px auto' }}
+              className="bg-cgc-paper border border-cgc-ink/[0.15] text-cgc-ink/80 font-inter text-sm rounded-cgc-md px-4 py-2 outline-none focus:border-cgc-red transition-colors cursor-pointer appearance-none pr-8 relative"
+              style={{ backgroundImage: 'url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%230d0d0d%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '8px auto' }}
             >
               <option value="newest">Newest</option>
               <option value="price-asc">Price: Low to High</option>
@@ -128,9 +128,9 @@ function ShopContent() {
 
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-2 bg-transparent border border-white/[0.15] text-white/50 font-cinzel text-[10px] uppercase tracking-[0.3em] px-[20px] py-[8px] hover:border-white/40 transition-all duration-200"
+              className="flex items-center gap-2 bg-transparent border border-cgc-ink/[0.15] text-cgc-ink/50 font-inter text-sm rounded-cgc-md px-[20px] py-[8px] hover:border-cgc-ink/40 transition-all duration-200"
             >
-              FILTER <SlidersHorizontal size={14} />
+              Filter <SlidersHorizontal size={14} />
             </button>
           </div>
         </div>
@@ -144,22 +144,22 @@ function ShopContent() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="overflow-hidden bg-cgc-surface-2 border-b border-white/5"
+            className="overflow-hidden bg-cgc-bone border-b border-cgc-ink/5"
           >
             <div className="max-w-[1400px] mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
               <div className="flex items-center gap-6">
-                <span className="font-cinzel text-[10px] text-gray-400 uppercase tracking-[0.3em]">
-                  SIZE:
+                <span className="font-inter text-sm text-gray-400 font-medium">
+                  Size:
                 </span>
                 <div className="flex gap-2">
                   {sizes.map(size => (
                     <button
                       key={size}
                       onClick={() => setSelectedSize(selectedSize === size ? '' : size)}
-                      className={`font-cinzel text-[10px] uppercase tracking-[0.3em] px-[20px] py-[8px] transition-all duration-200 ${
+                      className={`font-inter text-sm rounded-cgc-md px-[20px] py-[8px] transition-all duration-200 ${
                         selectedSize === size
-                          ? 'bg-cgc-red border-cgc-red text-cgc-white'
-                          : 'bg-transparent border-white/[0.15] text-white/50 hover:border-white/40'
+                          ? 'bg-cgc-red border-cgc-red text-white'
+                          : 'bg-transparent border border-cgc-ink/[0.15] text-cgc-ink/50 hover:border-cgc-ink/40'
                       }`}
                     >
                       {size}
@@ -171,9 +171,9 @@ function ShopContent() {
               {(selectedSize || selectedCategory !== 'ALL') && (
                 <button
                   onClick={() => { setSelectedSize(''); setSelectedCategory('ALL') }}
-                  className="font-cinzel text-[10px] text-cgc-red uppercase tracking-[0.3em] hover:text-white transition-colors flex items-center gap-1"
+                  className="font-inter text-sm text-cgc-red font-medium hover:text-cgc-ink transition-colors flex items-center gap-1"
                 >
-                  <X size={12} /> CLEAR ALL
+                  <X size={14} /> Clear all
                 </button>
               )}
             </div>
@@ -186,24 +186,24 @@ function ShopContent() {
         {loading ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {[...Array(8)].map((_, i) => (
-              <div key={i} className="aspect-[3/4] bg-cgc-surface overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_1.5s_infinite]" />
+              <div key={i} className="aspect-[3/4] bg-cgc-bone overflow-hidden relative rounded-cgc-lg">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cgc-ink/5 to-transparent -translate-x-full animate-[shimmer_1.5s_infinite]" />
               </div>
             ))}
           </div>
         ) : filtered.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-[80px]">
-            <div className="w-[100px] h-[100px] opacity-10 mb-6 grayscale">
+            <div className="w-[100px] h-[100px] opacity-10 mb-6 grayscale filter invert">
               <img src="/images/logo.jpg" alt="CGC" className="w-full h-full object-contain" />
             </div>
-            <h2 className="font-cinzel text-[24px] text-gray-400 uppercase tracking-widest mb-6">
-              No Products Found
+            <h2 className="font-inter text-2xl text-cgc-slate font-medium mb-6">
+              No products found
             </h2>
             <button
               onClick={() => { setSelectedSize(''); setSelectedCategory('ALL') }}
-              className="btn-primary"
+              className="btn-primary inline-block"
             >
-              Clear Filters
+              Clear filters
             </button>
           </div>
         ) : (
@@ -246,10 +246,8 @@ function ShopContent() {
 export default function ShopPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-cgc-black pt-20 
-        flex items-center justify-center">
-        <p className="font-cinzel text-cgc-gray uppercase 
-          tracking-widest text-sm">Loading...</p>
+      <div className="min-h-screen bg-cgc-paper pt-20 flex items-center justify-center">
+        <p className="font-inter text-cgc-slate text-sm font-medium">Loading...</p>
       </div>
     }>
       <ShopContent />

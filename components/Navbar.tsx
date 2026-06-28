@@ -49,13 +49,13 @@ function MegaMenu({ onClose }: { onClose: () => void }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="fixed left-0 right-0 bg-cgc-black border-b border-cgc-red z-50"
+      className="fixed left-0 right-0 bg-cgc-paper border-b border-cgc-hairline z-50"
       style={{ top: 0, paddingTop: '80px' }}
       onMouseLeave={onClose}
     >
       <div className="max-w-[1400px] mx-auto px-8 py-10">
-        <p className="font-cinzel text-[10px] uppercase tracking-[0.4em] text-cgc-gray mb-8">
-          Shop by Collection
+        <p className="font-inter text-sm font-medium text-cgc-slate mb-8">
+          Shop by collection
         </p>
         <div className="grid grid-cols-6 gap-4">
           {COLLECTIONS.map((col) => (
@@ -63,21 +63,21 @@ function MegaMenu({ onClose }: { onClose: () => void }) {
               key={col.slug}
               href={`/shop?category=${col.slug}`}
               onClick={onClose}
-              className="group flex flex-col items-center gap-3 p-4 rounded border border-white/5 hover:border-[#c9a84c]/40 transition-all duration-300"
+              className="group flex flex-col items-center gap-3 p-4 rounded-cgc-lg border border-cgc-ink/5 hover:border-cgc-red/40 transition-all duration-300"
             >
               <div
-                className="w-12 h-12 rounded-full flex items-center justify-center border border-white/10 group-hover:border-[#c9a84c]/40 transition-colors"
+                className="w-12 h-12 rounded-full flex items-center justify-center border border-cgc-ink/10 group-hover:border-cgc-red/40 transition-colors"
                 style={{ background: col.color }}
               >
-                <span className="font-cinzel text-[10px] text-white/60 group-hover:text-[#c9a84c] transition-colors uppercase">
+                <span className="font-inter text-sm text-white/80 group-hover:text-cgc-red transition-colors">
                   {col.name.slice(0, 2)}
                 </span>
               </div>
               <div className="flex items-center gap-1">
-                <span className="font-cinzel text-[11px] uppercase tracking-widest text-white/60 group-hover:text-white transition-colors">
+                <span className="font-inter text-sm font-medium text-cgc-ink group-hover:text-cgc-red transition-colors">
                   {col.name}
                 </span>
-                <ArrowRight size={10} className="text-white/0 group-hover:text-[#c9a84c] transition-all duration-300" />
+                <ArrowRight size={14} className="text-white/0 group-hover:text-cgc-red transition-all duration-300" />
               </div>
             </Link>
           ))}
@@ -128,20 +128,20 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="fixed inset-0 z-[100] flex flex-col bg-cgc-black/95 backdrop-blur-md"
+      className="fixed inset-0 z-[100] flex flex-col bg-cgc-paper/95 backdrop-blur-md"
     >
       <div className="max-w-3xl mx-auto w-full px-6 pt-24 pb-12 flex flex-col gap-12">
         {/* Input */}
-        <div className="relative flex items-center gap-4 border-b border-white/20 pb-4">
-          <Search size={24} className="text-white/40 flex-shrink-0" />
+        <div className="relative flex items-center gap-4 border-b border-cgc-ink/20 pb-4">
+          <Search size={24} className="text-cgc-ink/40 flex-shrink-0" />
           <input
             ref={inputRef}
             value={searchQuery}
             onChange={e => handleSearch(e.target.value)}
             placeholder="Search CGC..."
-            className="flex-1 bg-transparent font-cinzel text-3xl text-white placeholder-white/20 outline-none tracking-wider"
+            className="flex-1 bg-transparent font-inter text-3xl text-cgc-ink placeholder-cgc-ink/20 outline-none"
           />
-          <button onClick={onClose} className="text-white/40 hover:text-white transition-colors">
+          <button onClick={onClose} className="text-cgc-ink/40 hover:text-cgc-ink transition-colors">
             <X size={28} />
           </button>
         </div>
@@ -149,15 +149,15 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
         {/* Popular searches */}
         {searchQuery.length < 2 && (
           <div>
-            <p className="font-cinzel text-[10px] uppercase tracking-[0.4em] text-white/30 mb-4">
-              Popular Searches
+            <p className="font-inter text-sm font-medium text-cgc-slate mb-4">
+              Popular searches
             </p>
             <div className="flex flex-wrap gap-3">
               {POPULAR_SEARCHES.map(term => (
                 <button
                   key={term}
                   onClick={() => handleSearch(term)}
-                  className="px-4 py-2 border border-white/10 font-cinzel text-xs uppercase tracking-widest text-white/50 hover:border-cgc-red hover:text-white transition-all duration-200"
+                  className="px-4 py-2 border border-cgc-ink/10 rounded-cgc-md font-inter text-sm text-cgc-slate hover:border-cgc-red hover:text-cgc-red transition-all duration-200"
                 >
                   {term}
                 </button>
@@ -168,7 +168,7 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
 
         {/* Results */}
         {isSearching && (
-          <p className="font-cinzel text-xs text-white/30 uppercase tracking-widest">Searching...</p>
+          <p className="font-inter text-sm text-cgc-slate">Searching...</p>
         )}
         {results.length > 0 && (
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -177,15 +177,15 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
                 key={product.id}
                 href={`/product/${product.id}`}
                 onClick={onClose}
-                className="flex items-center gap-3 p-3 border border-white/5 hover:border-cgc-red/40 transition-all duration-200 group"
+                className="flex items-center gap-3 p-3 rounded-cgc-lg border border-cgc-ink/5 hover:border-cgc-red/40 transition-all duration-200 group bg-white"
               >
-                <div className="w-15 h-15 flex-shrink-0 bg-cgc-surface overflow-hidden">
+                <div className="w-15 h-15 flex-shrink-0 bg-cgc-bone overflow-hidden rounded-cgc-md">
                   {product.images?.[0] && (
                     <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
                   )}
                 </div>
                 <div>
-                  <p className="font-cinzel text-xs text-white group-hover:text-cgc-red transition-colors line-clamp-2 uppercase tracking-wider">
+                  <p className="font-inter text-sm text-cgc-ink group-hover:text-cgc-red transition-colors line-clamp-2">
                     {product.name}
                   </p>
                   <p className="text-cgc-red text-sm font-bold mt-1">${product.price}</p>
@@ -195,7 +195,7 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
           </div>
         )}
         {!isSearching && searchQuery.length >= 2 && results.length === 0 && (
-          <p className="font-cinzel text-xs text-white/30 uppercase tracking-widest">
+          <p className="font-inter text-sm text-cgc-slate">
             No results for &ldquo;{searchQuery}&rdquo;
           </p>
         )}
@@ -219,12 +219,12 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
       animate={{ x: 0 }}
       exit={{ x: '100%' }}
       transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="fixed inset-0 z-50 flex flex-col bg-[#0d0d0d]"
+      className="fixed inset-0 z-50 flex flex-col bg-cgc-paper"
     >
       {/* Close button */}
       <button
         onClick={onClose}
-        className="absolute top-6 right-6 text-white/60 hover:text-white transition-colors"
+        className="absolute top-6 right-6 text-cgc-ink/60 hover:text-cgc-ink transition-colors"
       >
         <X size={28} />
       </button>
@@ -246,15 +246,15 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
               <Link
                 href={link.href}
                 onClick={onClose}
-                className={`group flex items-center justify-center py-6 font-cinzel text-3xl uppercase tracking-[0.2em] transition-all duration-300 hover:text-[#c9a84c] hover:translate-x-1 ${
-                  pathname === link.href ? 'text-[#f5f0e8]' : 'text-[#a09888]'
+                className={`group flex items-center justify-center py-6 font-inter text-3xl font-medium transition-all duration-300 hover:text-cgc-red hover:translate-x-1 ${
+                  pathname === link.href ? 'text-cgc-ink' : 'text-cgc-slate'
                 }`}
               >
                 {link.label}
               </Link>
             </motion.div>
             {i < NAV_LINKS.length - 1 && (
-              <div className="w-1/3 mx-auto h-px bg-[#c9a84c]/20" />
+              <div className="w-1/3 mx-auto h-px bg-cgc-red/20" />
             )}
           </div>
         ))}
@@ -267,8 +267,8 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
         transition={{ delay: 0.5 }}
         className="p-8 flex flex-col items-center gap-5"
       >
-        <p className="font-cinzel text-[10px] uppercase tracking-[0.4em] text-white/30">
-          Follow Us
+        <p className="font-inter text-sm font-medium text-cgc-slate">
+          Follow us
         </p>
         <div className="flex items-center gap-6">
           {SOCIAL_LINKS.map(s => (
@@ -277,9 +277,9 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
               href={s.href}
               target="_blank"
               rel="noreferrer"
-              className="font-cinzel text-[9px] uppercase tracking-widest text-white/40 hover:text-[#c9a84c] transition-all duration-200 hover:scale-110"
+              className="font-inter text-sm font-medium text-cgc-slate hover:text-cgc-red transition-all duration-200 hover:scale-110"
             >
-              {s.label.slice(0, 2)}
+              {s.label}
             </a>
           ))}
         </div>
@@ -343,9 +343,6 @@ export default function Navbar() {
     megaLeaveTimeout.current = setTimeout(() => setMegaOpen(false), 300)
   }
 
-  /* Logo text opacity based on scroll */
-  const logoTextOpacity = Math.max(0, 1 - scrollY / 60)
-
   /* Navbar height */
   const navHeight = isScrolled ? 64 : 80
 
@@ -353,14 +350,8 @@ export default function Navbar() {
     <>
       {/* ── Navbar ── */}
       <nav
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-400"
-        style={{
-          height: navHeight,
-          background: isScrolled ? 'rgba(13,13,13,0.96)' : 'transparent',
-          backdropFilter: isScrolled ? 'blur(20px)' : 'none',
-          borderBottom: isScrolled ? '1px solid rgba(201,168,76,0.15)' : '1px solid transparent',
-          transition: 'all 0.4s ease',
-        }}
+        className="fixed top-0 left-0 right-0 z-50 bg-cgc-paper border-b border-cgc-hairline transition-all duration-400"
+        style={{ height: navHeight }}
       >
         <div
           className="flex items-center justify-between h-full px-8"
@@ -373,17 +364,14 @@ export default function Navbar() {
               alt="CGC Logo"
               width={48}
               height={48}
-              className="object-contain"
+              className="object-contain transition-all duration-300"
               style={{ height: 48, width: 'auto' }}
             />
-            <div
-              className="flex flex-col leading-tight transition-all duration-400 overflow-hidden"
-              style={{ opacity: logoTextOpacity, transform: `translateX(${logoTextOpacity === 0 ? '-8px' : '0'})` }}
-            >
-              <span className="font-cinzel text-[10px] text-[#f5f0e8] tracking-[0.3em] uppercase">
+            <div className="flex flex-col leading-tight transition-all duration-400 overflow-hidden text-cgc-ink">
+              <span className="font-inter text-sm font-semibold">
                 Cary Grant
               </span>
-              <span className="font-cinzel text-[10px] text-[#f5f0e8] tracking-[0.3em] uppercase">
+              <span className="font-inter text-sm font-semibold">
                 Clothing
               </span>
             </div>
@@ -400,29 +388,29 @@ export default function Navbar() {
               >
                 <Link
                   href={link.href}
-                  className={`font-cinzel text-[11px] uppercase tracking-[0.2em] transition-colors duration-300 relative group pb-1 ${
+                  className={`font-inter text-sm font-medium transition-colors duration-300 relative group pb-1 ${
                     pathname === link.href
-                      ? 'text-[#c9a84c]'
-                      : 'text-[#6e6358] hover:text-[#f5f0e8]'
+                      ? 'text-cgc-red'
+                      : 'text-cgc-slate hover:text-cgc-ink'
                   }`}
                 >
                   {link.label}
-                  {/* Animated gold underline */}
+                  {/* Animated red underline */}
                   <span
-                    className="absolute bottom-0 left-0 h-px bg-[#c9a84c] transition-all duration-300 ease-out"
+                    className="absolute bottom-0 left-0 h-px bg-cgc-red transition-all duration-300 ease-out"
                     style={{ width: pathname === link.href ? '100%' : '0' }}
                   />
-                  <span className="absolute bottom-0 left-0 h-px bg-[#c9a84c] w-0 group-hover:w-full transition-all duration-300 ease-out" />
+                  <span className="absolute bottom-0 left-0 h-px bg-cgc-red w-0 group-hover:w-full transition-all duration-300 ease-out" />
                 </Link>
               </div>
             ))}
           </div>
 
           {/* ── Right Icons ── */}
-          <div className="flex items-center" style={{ gap: 24 }}>
+          <div className="flex items-center text-cgc-ink" style={{ gap: 24 }}>
             <button
               onClick={() => setSearchOpen(true)}
-              className="text-[#6e6358] hover:text-[#f5f0e8] transition-colors duration-300"
+              className="transition-colors duration-300 hover:text-cgc-red"
               aria-label="Search"
             >
               <Search size={20} />
@@ -430,7 +418,7 @@ export default function Navbar() {
 
             <button
               onClick={openCart}
-              className="relative text-[#6e6358] hover:text-[#f5f0e8] transition-colors duration-300"
+              className="relative transition-colors duration-300 hover:text-cgc-red"
               aria-label="Cart"
             >
               <ShoppingCart size={20} />
@@ -438,7 +426,7 @@ export default function Navbar() {
                 <motion.span
                   animate={badgePulse ? { scale: [1, 1.4, 1] } : { scale: 1 }}
                   transition={{ duration: 0.4 }}
-                  className="absolute -top-2 -right-2 bg-[#c9a84c] text-[#0d0d0d] text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold"
+                  className="absolute -top-2 -right-2 bg-cgc-red text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold"
                 >
                   {count}
                 </motion.span>
@@ -449,7 +437,7 @@ export default function Navbar() {
             <div className="relative" ref={accountDropdownRef}>
               <button
                 onClick={() => setAccountDropdownOpen(!accountDropdownOpen)}
-                className="text-[#6e6358] hover:text-[#f5f0e8] transition-colors duration-300"
+                className="transition-colors duration-300 hover:text-cgc-red"
                 aria-label="Account"
               >
                 <User size={20} />
@@ -463,16 +451,16 @@ export default function Navbar() {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95, y: -10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute right-0 top-full mt-2 w-[220px] bg-[#141414] border border-white/[0.08] py-2 z-50"
+                    className="absolute right-0 top-full mt-2 w-[220px] bg-cgc-paper border border-cgc-hairline rounded-cgc-lg py-2 z-50 shadow-xl"
                   >
                     {user ? (
                       <>
                         {/* User Info */}
-                        <div className="px-4 py-3 border-b border-white/[0.05]">
-                          <p className="font-cinzel text-[11px] text-white uppercase tracking-wider">
+                        <div className="px-4 py-3 border-b border-cgc-ink/5">
+                          <p className="font-inter text-sm font-medium text-cgc-ink">
                             {user.displayName || 'Customer'}
                           </p>
-                          <p className="font-inter text-[10px] text-gray-500 truncate">
+                          <p className="font-inter text-xs text-cgc-slate truncate">
                             {user.email}
                           </p>
                         </div>
@@ -481,20 +469,20 @@ export default function Navbar() {
                         <Link
                           href="/account"
                           onClick={() => setAccountDropdownOpen(false)}
-                          className="block px-4 py-3 font-cinzel text-[10px] uppercase tracking-[0.2em] text-gray-400 hover:text-white hover:bg-white/[0.03] transition-colors"
+                          className="block px-4 py-3 font-inter text-sm text-cgc-slate hover:text-cgc-ink hover:bg-cgc-ink/5 transition-colors"
                         >
-                          MY ACCOUNT
+                          My account
                         </Link>
                         <Link
                           href="/account/orders"
                           onClick={() => setAccountDropdownOpen(false)}
-                          className="block px-4 py-3 font-cinzel text-[10px] uppercase tracking-[0.2em] text-gray-400 hover:text-white hover:bg-white/[0.03] transition-colors"
+                          className="block px-4 py-3 font-inter text-sm text-cgc-slate hover:text-cgc-ink hover:bg-cgc-ink/5 transition-colors"
                         >
-                          MY ORDERS
+                          My orders
                         </Link>
 
                         {/* Divider */}
-                        <div className="h-px bg-white/[0.05] my-2" />
+                        <div className="h-px bg-cgc-ink/5 my-2" />
 
                         {/* Sign Out */}
                         <button
@@ -502,9 +490,9 @@ export default function Navbar() {
                             await logout()
                             setAccountDropdownOpen(false)
                           }}
-                          className="w-full px-4 py-3 font-cinzel text-[10px] uppercase tracking-[0.2em] text-cgc-red hover:bg-white/[0.03] transition-colors text-left"
+                          className="w-full px-4 py-3 font-inter text-sm text-cgc-red hover:bg-cgc-ink/5 transition-colors text-left"
                         >
-                          SIGN OUT
+                          Sign out
                         </button>
                       </>
                     ) : (
@@ -513,16 +501,16 @@ export default function Navbar() {
                         <Link
                           href="/auth"
                           onClick={() => setAccountDropdownOpen(false)}
-                          className="block px-4 py-3 font-cinzel text-[10px] uppercase tracking-[0.2em] text-gray-400 hover:text-white hover:bg-white/[0.03] transition-colors"
+                          className="block px-4 py-3 font-inter text-sm text-cgc-slate hover:text-cgc-ink hover:bg-cgc-ink/5 transition-colors"
                         >
-                          SIGN IN
+                          Sign in
                         </Link>
                         <Link
                           href="/auth"
                           onClick={() => setAccountDropdownOpen(false)}
-                          className="block px-4 py-3 font-cinzel text-[10px] uppercase tracking-[0.2em] text-gray-400 hover:text-white hover:bg-white/[0.03] transition-colors"
+                          className="block px-4 py-3 font-inter text-sm text-cgc-slate hover:text-cgc-ink hover:bg-cgc-ink/5 transition-colors"
                         >
-                          CREATE ACCOUNT
+                          Create account
                         </Link>
                       </>
                     )}
@@ -534,7 +522,7 @@ export default function Navbar() {
             {/* Hamburger (mobile) */}
             <button
               onClick={() => setMenuOpen(true)}
-              className="lg:hidden text-[#6e6358] hover:text-[#f5f0e8] transition-colors"
+              className="lg:hidden transition-colors text-cgc-ink hover:text-cgc-red"
               aria-label="Menu"
             >
               <Menu size={24} />

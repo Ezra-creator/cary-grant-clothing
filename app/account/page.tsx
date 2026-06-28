@@ -79,10 +79,10 @@ export default function AccountPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-cgc-black flex items-center justify-center">
+      <div className="min-h-screen bg-cgc-ink flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <Image src="/images/logo.jpg" alt="CGC" width={48} height={48} className="animate-pulse object-contain" />
-          <p className="font-cinzel text-[#6e6358] uppercase tracking-[0.3em] text-[10px]">Loading...</p>
+          <p className="font-inter text-[#6e6358] tracking-[0.3em] text-[10px]">Loading...</p>
         </div>
       </div>
     )
@@ -91,7 +91,7 @@ export default function AccountPage() {
   if (!user) return null
 
   return (
-    <div className="min-h-screen bg-cgc-black py-20 px-6">
+    <div className="min-h-screen bg-cgc-ink py-20 px-6">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-center gap-6 mb-12">
@@ -100,7 +100,7 @@ export default function AccountPage() {
             {user.photoURL ? (
               <img src={user.photoURL} alt={user.displayName || 'User'} className="w-full h-full object-cover" />
             ) : (
-              <span className="font-cinzel text-2xl text-[#f5f0e8] uppercase">
+              <span className="font-inter text-2xl text-[#f5f0e8]">
                 {user.displayName?.slice(0, 2) || user.email?.slice(0, 2) || 'U'}
               </span>
             )}
@@ -108,7 +108,7 @@ export default function AccountPage() {
 
           {/* User Info */}
           <div>
-            <h1 className="font-cinzel text-2xl text-[#f5f0e8] uppercase tracking-widest mb-2">
+            <h1 className="font-inter text-2xl text-[#f5f0e8] mb-2">
               {user.displayName || 'Customer'}
             </h1>
             <p className="font-inter text-[#6e6358]">{user.email}</p>
@@ -118,18 +118,18 @@ export default function AccountPage() {
         <div className="grid md:grid-cols-2 gap-8">
           {/* Profile Section */}
           <div className="bg-[#161616] border border-[rgba(201,168,76,0.15)] p-8">
-            <h2 className="font-cinzel text-lg text-[#f5f0e8] uppercase tracking-widest mb-6">PROFILE</h2>
+            <h2 className="font-inter text-lg text-[#f5f0e8] mb-6">PROFILE</h2>
             
             <div className="space-y-4">
               <div>
-                <label className="font-cinzel text-[10px] uppercase tracking-[0.3em] text-[#6e6358] block mb-2">
+                <label className="font-inter text-[10px] tracking-[0.3em] text-[#6e6358] block mb-2">
                   Display Name
                 </label>
                 <input
                   type="text"
                   value={displayName}
                   onChange={e => setDisplayName(e.target.value)}
-                  className="w-full bg-[#0d0d0d] border border-[rgba(245,240,232,0.1)] focus:border-[#c9a84c] outline-none px-4 py-3 text-[#f5f0e8] font-inter transition-colors"
+                  className="w-full bg-[#0d0d0d] border border-[rgba(245,240,232,0.1)] focus:border-[var(--cgc-red)] outline-none px-4 py-3 text-[#f5f0e8] font-inter transition-colors"
                 />
               </div>
 
@@ -143,7 +143,7 @@ export default function AccountPage() {
                 </button>
                 <button
                   onClick={handleChangePassword}
-                  className="flex-1 border border-[rgba(245,240,232,0.1)] text-[#f5f0e8] font-cinzel text-[10px] uppercase tracking-[0.2em] py-3 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors"
+                  className="flex-1 border border-[rgba(245,240,232,0.1)] text-[#f5f0e8] font-inter text-[10px] tracking-[0.2em] py-3 hover:border-[var(--cgc-red)] hover:text-[var(--cgc-red)] transition-colors"
                 >
                   CHANGE PASSWORD
                 </button>
@@ -154,10 +154,10 @@ export default function AccountPage() {
           {/* Orders Section */}
           <div className="bg-[#161616] border border-[rgba(201,168,76,0.15)] p-8">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="font-cinzel text-lg text-[#f5f0e8] uppercase tracking-widest">MY ORDERS</h2>
+              <h2 className="font-inter text-lg text-[#f5f0e8]">MY ORDERS</h2>
               <Link
                 href="/account/orders"
-                className="font-cinzel text-[10px] uppercase tracking-[0.2em] text-[#c9a84c] hover:underline"
+                className="font-inter text-[10px] tracking-[0.2em] text-[var(--cgc-red)] hover:underline"
               >
                 VIEW ALL
               </Link>
@@ -180,10 +180,10 @@ export default function AccountPage() {
                 {orders.slice(0, 3).map((order) => (
                   <div key={order.id} className="border border-[rgba(245,240,232,0.05)] p-4 hover:border-[rgba(245,240,232,0.1)] transition-colors">
                     <div className="flex items-center justify-between mb-2">
-                      <p className="font-cinzel text-[10px] uppercase tracking-[0.2em] text-[#6e6358]">
+                      <p className="font-inter text-[10px] tracking-[0.2em] text-[#6e6358]">
                         {order.createdAt?.toDate?.()?.toLocaleDateString() || 'N/A'}
                       </p>
-                      <span className={`font-cinzel text-[9px] uppercase tracking-[0.2em] px-2 py-1 ${
+                      <span className={`font-inter text-[9px] tracking-[0.2em] px-2 py-1 ${
                         order.status === 'completed' ? 'bg-green-500/20 text-green-500' :
                         order.status === 'pending' ? 'bg-yellow-500/20 text-yellow-500' :
                         'bg-gray-500/20 text-gray-500'

@@ -16,26 +16,26 @@ export async function POST(request: NextRequest) {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0d0d0d; color: #f5f0e8; padding: 40px;">
           
           <div style="text-align: center; margin-bottom: 32px;">
-            <h1 style="font-size: 28px; color: #c9a84c; letter-spacing: 4px; margin: 0;">CGC</h1>
+            <h1 style="font-size: 28px; color: #e30613; letter-spacing: 4px; margin: 0;">CGC</h1>
             <p style="color: #a09888; font-size: 11px; letter-spacing: 3px; margin: 4px 0 0;">
               CARY GRANT CLOTHING
             </p>
           </div>
 
-          <div style="border-top: 2px solid #c9a84c; padding-top: 32px; text-align: center; margin-bottom: 32px;">
+          <div style="border-top: 2px solid #e30613; padding-top: 32px; text-align: center; margin-bottom: 32px;">
             <h2 style="color: #f5f0e8; font-size: 22px; letter-spacing: 3px;">
               ORDER CONFIRMED ✓
             </h2>
             <p style="color: #a09888;">
               Thank you, ${order.customerName}!
             </p>
-            <p style="color: #c9a84c; font-size: 13px; letter-spacing: 2px;">
+            <p style="color: #e30613; font-size: 13px; letter-spacing: 2px;">
               ORDER #${order.id.slice(0,8).toUpperCase()}
             </p>
           </div>
 
           <div style="background: #161616; padding: 24px; margin-bottom: 24px;">
-            <h3 style="color: #c9a84c; font-size: 11px; letter-spacing: 3px; margin: 0 0 16px;">
+            <h3 style="color: #e30613; font-size: 11px; letter-spacing: 3px; margin: 0 0 16px;">
               ORDER SUMMARY
             </h3>
             ${order.items.map((item: any) => `
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
                 <span style="color: #f5f0e8;">
                   ${item.product.name} x${item.quantity}
                 </span>
-                <span style="color: #c9a84c; font-weight: bold;">
+                <span style="color: #e30613; font-weight: bold;">
                   $${(item.product.price * item.quantity).toFixed(2)}
                 </span>
               </div>
@@ -58,14 +58,14 @@ export async function POST(request: NextRequest) {
               <p style="color: #a09888; font-size: 12px;">
                 HST: $${order.tax.toFixed(2)}
               </p>
-              <p style="color: #c9a84c; font-size: 18px; font-weight: bold;">
+              <p style="color: #e30613; font-size: 18px; font-weight: bold;">
                 Total: $${order.total.toFixed(2)} CAD
               </p>
             </div>
           </div>
 
           <div style="background: #161616; padding: 24px; margin-bottom: 24px;">
-            <h3 style="color: #c9a84c; font-size: 11px; letter-spacing: 3px; margin: 0 0 12px;">
+            <h3 style="color: #e30613; font-size: 11px; letter-spacing: 3px; margin: 0 0 12px;">
               SHIPPING TO
             </h3>
             <p style="color: #f5f0e8; margin: 0;">
@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
             <p style="color: #a09888; font-size: 12px;">
               54 Dunlop Street West, Barrie, ON
             </p>
-            <p style="color: #c9a84c; font-size: 11px; letter-spacing: 3px; margin-top: 16px;">
+            <p style="color: #e30613; font-size: 11px; letter-spacing: 3px; margin-top: 16px;">
               CARY GRANT CLOTHING — EST. 2002 🇨🇦
             </p>
           </div>
@@ -100,17 +100,17 @@ export async function POST(request: NextRequest) {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0d0d0d; color: #f5f0e8; padding: 40px;">
           
           <div style="text-align: center; margin-bottom: 32px;">
-            <h1 style="font-size: 28px; color: #c9a84c; letter-spacing: 4px; margin: 0;">CGC</h1>
+            <h1 style="font-size: 28px; color: #e30613; letter-spacing: 4px; margin: 0;">CGC</h1>
             <p style="color: #a09888; font-size: 11px; letter-spacing: 3px; margin: 4px 0 0;">
               CARY GRANT CLOTHING — NEW ORDER
             </p>
           </div>
 
-          <div style="border-top: 2px solid #c9a84c; padding-top: 32px; margin-bottom: 32px;">
+          <div style="border-top: 2px solid #e30613; padding-top: 32px; margin-bottom: 32px;">
             <h2 style="color: #f5f0e8; font-size: 22px; letter-spacing: 3px;">
               ORDER #${order.id.slice(0,8).toUpperCase()}
             </h2>
-            <p style="color: #c9a84c; font-size: 18px; font-weight: bold;">
+            <p style="color: #e30613; font-size: 18px; font-weight: bold;">
               $${order.total.toFixed(2)} CAD
             </p>
             <p style="color: #a09888;">
@@ -122,7 +122,7 @@ export async function POST(request: NextRequest) {
           </div>
 
           <div style="background: #161616; padding: 24px; margin-bottom: 24px;">
-            <h3 style="color: #c9a84c; font-size: 11px; letter-spacing: 3px; margin: 0 0 16px;">
+            <h3 style="color: #e30613; font-size: 11px; letter-spacing: 3px; margin: 0 0 16px;">
               ORDER SUMMARY
             </h3>
             ${order.items.map((item: any) => `
@@ -130,7 +130,7 @@ export async function POST(request: NextRequest) {
                 <span style="color: #f5f0e8;">
                   ${item.product.name} x${item.quantity} (${item.size}, ${item.color})
                 </span>
-                <span style="color: #c9a84c; font-weight: bold;">
+                <span style="color: #e30613; font-weight: bold;">
                   $${(item.product.price * item.quantity).toFixed(2)}
                 </span>
               </div>
@@ -145,14 +145,14 @@ export async function POST(request: NextRequest) {
               <p style="color: #a09888; font-size: 12px;">
                 HST: $${order.tax.toFixed(2)}
               </p>
-              <p style="color: #c9a84c; font-size: 18px; font-weight: bold;">
+              <p style="color: #e30613; font-size: 18px; font-weight: bold;">
                 Total: $${order.total.toFixed(2)} CAD
               </p>
             </div>
           </div>
 
           <div style="background: #161616; padding: 24px; margin-bottom: 24px;">
-            <h3 style="color: #c9a84c; font-size: 11px; letter-spacing: 3px; margin: 0 0 12px;">
+            <h3 style="color: #e30613; font-size: 11px; letter-spacing: 3px; margin: 0 0 12px;">
               SHIPPING TO
             </h3>
             <p style="color: #f5f0e8; margin: 0;">

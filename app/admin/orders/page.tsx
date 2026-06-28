@@ -63,8 +63,8 @@ export default function AdminOrdersPage() {
   return (
     <div>
       <div className="mb-8">
-        <p className="font-cinzel text-[10px] uppercase tracking-[0.5em] text-cgc-red mb-2">Management</p>
-        <h1 className="font-cinzel text-[28px] text-cgc-white uppercase tracking-wide">Orders</h1>
+        <p className="font-inter text-[10px] tracking-[0.5em] text-cgc-red mb-2">Management</p>
+        <h1 className="font-inter text-[28px] text-cgc-paper">Orders</h1>
       </div>
 
       {/* Pill Stats Filter */}
@@ -73,7 +73,7 @@ export default function AdminOrdersPage() {
           <button
             key={label}
             onClick={() => setFilterStatus(label === 'All Orders' ? 'all' : label)}
-            className={`font-cinzel text-[9px] uppercase tracking-[0.3em] px-4 py-2 flex items-center gap-2 transition-all duration-200 ${
+            className={`font-inter text-[9px] tracking-[0.3em] px-4 py-2 flex items-center gap-2 transition-all duration-200 ${
               (label === 'All Orders' ? 'all' : label) === filterStatus
                 ? 'bg-cgc-red border border-cgc-red text-white'
                 : 'border border-white/10 text-gray-500 hover:border-white/30 hover:text-white'
@@ -87,20 +87,20 @@ export default function AdminOrdersPage() {
 
       {loading ? (
         <div className="space-y-2">
-          {[...Array(5)].map((_, i) => <div key={i} className="h-16 bg-cgc-surface-2 animate-pulse" />)}
+          {[...Array(5)].map((_, i) => <div key={i} className="h-16 bg-cgc-ink animate-pulse" />)}
         </div>
       ) : filtered.length === 0 ? (
-        <div className="bg-cgc-sidebar-bg border border-white/5 p-16 text-center">
-          <p className="font-cinzel text-gray-600 uppercase tracking-widest text-[13px]">No orders found</p>
+        <div className="bg-cgc-ink border border-white/5 p-16 text-center">
+          <p className="font-inter text-gray-600 text-[13px]">No orders found</p>
         </div>
       ) : (
-        <div className="bg-cgc-sidebar-bg border border-white/5 overflow-hidden">
+        <div className="bg-cgc-ink border border-white/5 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-white/5">
                   {['Order', 'Customer', 'Total', 'Payment', 'Status', 'Update', 'View'].map(h => (
-                    <th key={h} className="text-left px-5 py-4 font-cinzel text-[9px] uppercase tracking-[0.3em] text-gray-600">{h}</th>
+                    <th key={h} className="text-left px-5 py-4 font-inter text-[9px] tracking-[0.3em] text-gray-600">{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -109,24 +109,24 @@ export default function AdminOrdersPage() {
                   <tr key={order.id} className={`border-b border-white/[0.03] hover:bg-white/[0.02] transition-colors ${i % 2 === 0 ? '' : 'bg-white/[0.01]'}`}>
                     <td className="px-5 py-4 font-mono text-[11px] text-gray-600">#{order.id.slice(0, 8)}</td>
                     <td className="px-5 py-4">
-                      <p className="font-cinzel text-[11px] text-white uppercase tracking-wide">{order.customerName}</p>
+                      <p className="font-inter text-[11px] text-white">{order.customerName}</p>
                       <p className="font-inter text-[10px] text-gray-600 mt-0.5">{order.email}</p>
                     </td>
-                    <td className="px-5 py-4 font-cinzel text-[13px] text-cgc-red font-black">${order.total?.toFixed(2)}</td>
+                    <td className="px-5 py-4 font-inter text-[13px] text-cgc-red font-black">${order.total?.toFixed(2)}</td>
                     <td className="px-5 py-4 flex items-center gap-2">
-                      <span className={`font-cinzel text-[9px] uppercase tracking-[0.2em] px-2 py-1 ${
+                      <span className={`font-inter text-[9px] tracking-[0.2em] px-2 py-1 ${
                         order.paymentStatus === 'paid' ? 'bg-green-900/30 text-green-400 border border-green-800/50' : 'bg-red-900/30 text-red-400 border border-red-800/50'
                       }`}>
                         {order.paymentStatus}
                       </span>
                       {(order as any).isDemoOrder && (
-                        <span className="font-cinzel text-[8px] uppercase tracking-[0.2em] px-2 py-1 bg-amber-900/30 text-amber-400 border border-amber-800/50">
+                        <span className="font-inter text-[8px] tracking-[0.2em] px-2 py-1 bg-amber-900/30 text-amber-400 border border-amber-800/50">
                           DEMO
                         </span>
                       )}
                     </td>
                     <td className="px-5 py-4">
-                      <span className={`font-cinzel text-[9px] uppercase tracking-[0.2em] px-2 py-1 ${statusColors[order.status] || ''}`}>
+                      <span className={`font-inter text-[9px] tracking-[0.2em] px-2 py-1 ${statusColors[order.status] || ''}`}>
                         {order.status}
                       </span>
                     </td>
@@ -134,9 +134,9 @@ export default function AdminOrdersPage() {
                       <select
                         value={order.status}
                         onChange={e => updateStatus(order.id, e.target.value)}
-                        className="bg-cgc-surface-2 border border-white/10 text-gray-400 font-cinzel text-[9px] uppercase tracking-[0.2em] px-2 py-2 outline-none focus:border-cgc-red transition-colors cursor-pointer"
+                        className="bg-cgc-ink border border-white/10 text-gray-400 font-inter text-[9px] tracking-[0.2em] px-2 py-2 outline-none focus:border-cgc-red transition-colors cursor-pointer"
                       >
-                        {statuses.map(s => <option key={s} value={s} className="bg-cgc-surface-2">{s}</option>)}
+                        {statuses.map(s => <option key={s} value={s} className="bg-cgc-ink">{s}</option>)}
                       </select>
                     </td>
                     <td className="px-5 py-4">
@@ -174,12 +174,12 @@ export default function AdminOrdersPage() {
               transition={{ duration: 0.25 }}
               className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
             >
-              <div className="bg-cgc-sidebar-bg border border-white/10 w-full max-w-lg max-h-[90vh] overflow-y-auto pointer-events-auto">
+              <div className="bg-cgc-ink border border-white/10 w-full max-w-lg max-h-[90vh] overflow-y-auto pointer-events-auto">
                 {/* Modal Header */}
                 <div className="flex items-center justify-between px-6 py-5 border-b border-white/5">
                   <div>
-                    <p className="font-cinzel text-[9px] uppercase tracking-[0.4em] text-cgc-red mb-1">Order Details</p>
-                    <h2 className="font-cinzel text-[14px] text-cgc-white uppercase tracking-wide">#{selected.id.slice(0, 8)}</h2>
+                    <p className="font-inter text-[9px] tracking-[0.4em] text-cgc-red mb-1">Order Details</p>
+                    <h2 className="font-inter text-[14px] text-cgc-paper">#{selected.id.slice(0, 8)}</h2>
                   </div>
                   <button onClick={() => setSelected(null)} className="text-gray-500 hover:text-white transition-colors">
                     <X size={18} />
@@ -190,19 +190,19 @@ export default function AdminOrdersPage() {
                   {/* Order Progress Stepper */}
                   {progressIdx !== -1 && (
                     <div>
-                      <p className="font-cinzel text-[9px] uppercase tracking-[0.4em] text-gray-500 mb-4">Order Progress</p>
+                      <p className="font-inter text-[9px] tracking-[0.4em] text-gray-500 mb-4">Order Progress</p>
                       <div className="flex items-center">
                         {orderProgress.map((s, i) => (
                           <div key={s} className="flex items-center flex-1">
                             <div className="flex flex-col items-center gap-1">
-                              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-cinzel transition-all ${
+                              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-inter transition-all ${
                                 i < progressIdx ? 'bg-green-700 text-white' :
                                 i === progressIdx ? 'bg-cgc-red text-white' :
                                 'bg-white/5 border border-white/15 text-gray-600'
                               }`}>
                                 {i < progressIdx ? <Check size={12} /> : i + 1}
                               </div>
-                              <span className={`font-cinzel text-[8px] uppercase tracking-[0.2em] ${i <= progressIdx ? 'text-white' : 'text-gray-700'}`}>{s}</span>
+                              <span className={`font-inter text-[8px] tracking-[0.2em] ${i <= progressIdx ? 'text-white' : 'text-gray-700'}`}>{s}</span>
                             </div>
                             {i < orderProgress.length - 1 && (
                               <div className={`flex-1 h-[1px] mx-1 mb-5 ${i < progressIdx ? 'bg-green-700' : 'bg-white/10'}`} />
@@ -224,7 +224,7 @@ export default function AdminOrdersPage() {
                       { label: 'Payment Status', value: selected.paymentStatus },
                     ].map(({ label, value }) => (
                       <div key={label} className={label === 'Address' ? 'col-span-2' : ''}>
-                        <p className="font-cinzel text-[9px] uppercase tracking-[0.3em] text-gray-600 mb-1">{label}</p>
+                        <p className="font-inter text-[9px] tracking-[0.3em] text-gray-600 mb-1">{label}</p>
                         <p className="font-inter text-[13px] text-white capitalize">{value}</p>
                       </div>
                     ))}
@@ -232,15 +232,15 @@ export default function AdminOrdersPage() {
 
                   {/* Items */}
                   <div className="border-t border-white/5 pt-4">
-                    <p className="font-cinzel text-[9px] uppercase tracking-[0.4em] text-gray-500 mb-4">Items</p>
+                    <p className="font-inter text-[9px] tracking-[0.4em] text-gray-500 mb-4">Items</p>
                     <div className="space-y-3">
                       {selected.items?.map((item, i) => (
                         <div key={i} className="flex justify-between items-center py-2 border-b border-white/5">
                           <div>
-                            <p className="font-cinzel text-[11px] text-white uppercase tracking-wide">{item.product?.name}</p>
+                            <p className="font-inter text-[11px] text-white">{item.product?.name}</p>
                             <p className="font-inter text-[10px] text-gray-500 mt-0.5">Size: {item.size} | Color: {item.color} | Qty: {item.quantity}</p>
                           </div>
-                          <p className="font-cinzel text-cgc-red font-black">${(item.product?.price * item.quantity).toFixed(2)}</p>
+                          <p className="font-inter text-cgc-red font-black">${(item.product?.price * item.quantity).toFixed(2)}</p>
                         </div>
                       ))}
                     </div>
@@ -253,11 +253,11 @@ export default function AdminOrdersPage() {
                       { label: 'Shipping', value: selected.shipping === 0 ? 'Free' : `$${selected.shipping?.toFixed(2)}` },
                       { label: 'Tax (HST 13%)', value: `$${selected.tax?.toFixed(2)}` },
                     ].map(({ label, value }) => (
-                      <div key={label} className="flex justify-between font-cinzel text-[10px] uppercase tracking-[0.2em] text-gray-500">
+                      <div key={label} className="flex justify-between font-inter text-[10px] tracking-[0.2em] text-gray-500">
                         <span>{label}</span><span className="text-white">{value}</span>
                       </div>
                     ))}
-                    <div className="flex justify-between font-cinzel uppercase tracking-[0.2em] border-t border-white/10 pt-3">
+                    <div className="flex justify-between font-inter tracking-[0.2em] border-t border-white/10 pt-3">
                       <span className="text-[11px] text-white">Total</span>
                       <span className="text-cgc-red font-black text-[16px]">${selected.total?.toFixed(2)}</span>
                     </div>
@@ -265,13 +265,13 @@ export default function AdminOrdersPage() {
 
                   {/* Update Status */}
                   <div className="border-t border-white/5 pt-4">
-                    <p className="font-cinzel text-[9px] uppercase tracking-[0.4em] text-gray-500 mb-3">Update Status</p>
+                    <p className="font-inter text-[9px] tracking-[0.4em] text-gray-500 mb-3">Update Status</p>
                     <div className="flex flex-wrap gap-2">
                       {statuses.map(s => (
                         <button
                           key={s}
                           onClick={() => updateStatus(selected.id, s)}
-                          className={`font-cinzel text-[9px] uppercase tracking-[0.2em] px-3 py-2 border transition-all ${
+                          className={`font-inter text-[9px] tracking-[0.2em] px-3 py-2 border transition-all ${
                             selected.status === s
                               ? 'bg-cgc-red border-cgc-red text-white'
                               : 'border-white/10 text-gray-500 hover:border-white/30 hover:text-white'

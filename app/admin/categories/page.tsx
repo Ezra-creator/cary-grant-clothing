@@ -67,7 +67,7 @@ export default function AdminCategoriesPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="font-cinzel text-2xl text-cgc-white uppercase tracking-widest">Categories</h1>
+          <h1 className="font-inter text-2xl text-cgc-paper">Categories</h1>
           <p className="text-cgc-gray font-inter text-sm mt-1">{categories.length} categories</p>
         </div>
         <button onClick={openAdd} className="btn-primary flex items-center gap-2 text-xs">
@@ -77,20 +77,20 @@ export default function AdminCategoriesPage() {
 
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {[...Array(6)].map((_, i) => <div key={i} className="h-32 bg-cgc-surface animate-pulse" />)}
+          {[...Array(6)].map((_, i) => <div key={i} className="h-32 bg-cgc-ink animate-pulse" />)}
         </div>
       ) : categories.length === 0 ? (
-        <div className="bg-cgc-surface border border-white/5 p-16 text-center">
-          <p className="font-cinzel text-cgc-gray uppercase tracking-widest mb-4">No categories yet</p>
+        <div className="bg-cgc-ink border border-white/5 p-16 text-center">
+          <p className="font-inter text-cgc-gray mb-4">No categories yet</p>
           <button onClick={openAdd} className="btn-primary text-xs">Add First Category</button>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {categories.map(cat => (
-            <div key={cat.id} className="bg-cgc-surface border border-white/5 p-6">
+            <div key={cat.id} className="bg-cgc-ink border border-white/5 p-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="font-cinzel text-cgc-white uppercase tracking-widest text-sm">{cat.name}</p>
+                  <p className="font-inter text-cgc-paper text-sm">{cat.name}</p>
                   <p className="text-cgc-gray text-xs font-mono mt-1">/{cat.slug}</p>
                   {cat.description && <p className="text-cgc-gray text-xs font-inter mt-2">{cat.description}</p>}
                 </div>
@@ -112,12 +112,12 @@ export default function AdminCategoriesPage() {
 
       {showModal && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-          <div className="bg-cgc-surface border border-white/10 w-full max-w-md">
+          <div className="bg-cgc-ink border border-white/10 w-full max-w-md">
             <div className="flex items-center justify-between p-6 border-b border-white/10">
-              <h2 className="font-cinzel text-cgc-white uppercase tracking-widest text-sm">
+              <h2 className="font-inter text-cgc-paper text-sm">
                 {editing ? 'Edit Category' : 'Add Category'}
               </h2>
-              <button onClick={() => setShowModal(false)} className="text-cgc-gray hover:text-cgc-white">
+              <button onClick={() => setShowModal(false)} className="text-cgc-gray hover:text-cgc-paper">
                 <X size={20} />
               </button>
             </div>
@@ -129,11 +129,11 @@ export default function AdminCategoriesPage() {
                 { key: 'image', label: 'Image URL', placeholder: 'https://...' },
               ].map(field => (
                 <div key={field.key}>
-                  <label className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray block mb-2">{field.label}</label>
+                  <label className="font-inter text-xs text-cgc-gray block mb-2">{field.label}</label>
                   <input type="text" value={form[field.key as keyof typeof form]}
                     onChange={e => setForm({ ...form, [field.key]: e.target.value })}
                     placeholder={field.placeholder}
-                    className="w-full bg-cgc-black border border-white/10 focus:border-cgc-red outline-none px-4 py-3 text-cgc-white font-inter text-sm placeholder-cgc-gray/30 transition-colors" />
+                    className="w-full bg-cgc-ink border border-white/10 focus:border-cgc-red outline-none px-4 py-3 text-cgc-paper font-inter text-sm placeholder-cgc-gray/30 transition-colors" />
                 </div>
               ))}
             </div>

@@ -58,7 +58,7 @@ export default function CardPaymentForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="border border-cgc-gold-border p-5 bg-cgc-surface">
+      <div className="border border-cgc-ink/10 p-5 bg-cgc-bone">
         <PaymentElement
           options={{
             layout: { type: 'tabs', defaultCollapsed: false },
@@ -77,9 +77,9 @@ export default function CardPaymentForm({
         </motion.div>
       )}
 
-      <div className="flex items-center justify-center gap-2 text-cgc-gray-2">
-        <ShieldCheck size={14} className="text-cgc-gold" />
-        <span className="font-cinzel text-xs uppercase tracking-widest">
+      <div className="flex items-center justify-center gap-2 text-cgc-slate">
+        <ShieldCheck size={14} className="text-[var(--cgc-red)]" />
+        <span className="font-inter text-xs">
           256-bit Encrypted Card Payment
         </span>
       </div>
@@ -100,8 +100,8 @@ export default function CardPaymentForm({
 
       <div className="flex items-center justify-center gap-3 pt-2">
         {['VISA', 'MASTERCARD', 'AMEX'].map(card => (
-          <span key={card} className="font-cinzel text-xs text-cgc-gray-1
-            border border-cgc-gray-3 px-2 py-1 tracking-widest">
+          <span key={card} className="font-inter text-xs text-cgc-slate
+            border border-cgc-hairline px-2 py-1 ">
             {card}
           </span>
         ))}

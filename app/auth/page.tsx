@@ -150,22 +150,22 @@ function AuthContent() {
 
         {/* Card */}
         <div className="bg-[#161616] border border-[rgba(201,168,76,0.15)] p-8 relative">
-          {/* Top gold accent border */}
-          <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#c9a84c]" />
+          {/* Top red accent border */}
+          <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--cgc-red)]" />
           {/* Tab Switcher */}
           <div className="flex gap-8 mb-8 relative">
             <button
               onClick={() => { setIsLogin(true); setLoginError(''); setSignupError('') }}
-              className={`font-cinzel text-[11px] uppercase tracking-[0.3em] pb-2 transition-colors ${
-                isLogin ? 'text-[#c9a84c]' : 'text-[#6e6358]'
+              className={`font-inter text-[11px] tracking-[0.3em] pb-2 transition-colors ${
+                isLogin ? 'text-[var(--cgc-red)]' : 'text-[#6e6358]'
               }`}
             >
               SIGN IN
             </button>
             <button
               onClick={() => { setIsLogin(false); setLoginError(''); setSignupError('') }}
-              className={`font-cinzel text-[11px] uppercase tracking-[0.3em] pb-2 transition-colors ${
-                !isLogin ? 'text-[#c9a84c]' : 'text-[#6e6358]'
+              className={`font-inter text-[11px] tracking-[0.3em] pb-2 transition-colors ${
+                !isLogin ? 'text-[var(--cgc-red)]' : 'text-[#6e6358]'
               }`}
             >
               CREATE ACCOUNT
@@ -173,7 +173,7 @@ function AuthContent() {
             {/* Active underline */}
             <motion.div
               layout
-              className="absolute bottom-0 h-[2px] bg-[#c9a84c]"
+              className="absolute bottom-0 h-[2px] bg-[var(--cgc-red)]"
               initial={false}
               animate={{ left: isLogin ? '0%' : '50%', width: '50%' }}
               transition={{ duration: 0.3 }}
@@ -191,18 +191,18 @@ function AuthContent() {
               >
                 <form onSubmit={handleLogin} className="space-y-4">
                   <div>
-                    <label className="font-cinzel text-[10px] uppercase tracking-[0.3em] text-[#a09888] block mb-2">Email</label>
+                    <label className="font-inter text-[10px] tracking-[0.3em] text-[#a09888] block mb-2">Email</label>
                     <input
                       type="email"
                       value={loginEmail}
                       onChange={e => setLoginEmail(e.target.value)}
                       placeholder="your@email.com"
                       required
-                      className="w-full bg-[#161616] border border-[rgba(245,240,232,0.1)] focus:border-[#c9a84c] outline-none px-4 py-3 text-[#f5f0e8] font-inter placeholder-[#6e6358] transition-colors"
+                      className="w-full bg-[#161616] border border-[rgba(245,240,232,0.1)] focus:border-[var(--cgc-red)] outline-none px-4 py-3 text-[#f5f0e8] font-inter placeholder-[#6e6358] transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="font-cinzel text-[10px] uppercase tracking-[0.3em] text-[#a09888] block mb-2">Password</label>
+                    <label className="font-inter text-[10px] tracking-[0.3em] text-[#a09888] block mb-2">Password</label>
                     <div className="relative">
                       <input
                         type={showPassword ? 'text' : 'password'}
@@ -210,7 +210,7 @@ function AuthContent() {
                         onChange={e => setLoginPassword(e.target.value)}
                         placeholder="••••••••"
                         required
-                        className="w-full bg-[#161616] border border-[rgba(245,240,232,0.1)] focus:border-[#c9a84c] outline-none px-4 py-3 text-[#f5f0e8] font-inter placeholder-[#6e6358] transition-colors pr-12"
+                        className="w-full bg-[#161616] border border-[rgba(245,240,232,0.1)] focus:border-[var(--cgc-red)] outline-none px-4 py-3 text-[#f5f0e8] font-inter placeholder-[#6e6358] transition-colors pr-12"
                       />
                       <button
                         type="button"
@@ -236,7 +236,7 @@ function AuthContent() {
                     <button
                       type="button"
                       onClick={handleForgotPassword}
-                      className="font-cinzel text-[9px] uppercase tracking-[0.2em] text-[#c9a84c] hover:underline"
+                      className="font-inter text-[9px] tracking-[0.2em] text-[var(--cgc-red)] hover:underline"
                     >
                       FORGOT PASSWORD?
                     </button>
@@ -257,7 +257,7 @@ function AuthContent() {
                   Don't have an account?{' '}
                   <button
                     onClick={() => setIsLogin(false)}
-                    className="text-[#f5f0e8] hover:text-[#c9a84c] transition-colors font-cinzel text-[10px] uppercase tracking-[0.2em]"
+                    className="text-[#f5f0e8] hover:text-[var(--cgc-red)] transition-colors font-inter text-[10px] tracking-[0.2em]"
                   >
                     CREATE ONE
                   </button>
@@ -273,29 +273,29 @@ function AuthContent() {
               >
                 <form onSubmit={handleSignup} className="space-y-4">
                   <div>
-                    <label className="font-cinzel text-[10px] uppercase tracking-[0.3em] text-[#a09888] block mb-2">Full Name</label>
+                    <label className="font-inter text-[10px] tracking-[0.3em] text-[#a09888] block mb-2">Full Name</label>
                     <input
                       type="text"
                       value={signupName}
                       onChange={e => setSignupName(e.target.value)}
                       placeholder="John Doe"
                       required
-                      className="w-full bg-[#161616] border border-[rgba(245,240,232,0.1)] focus:border-[#c9a84c] outline-none px-4 py-3 text-[#f5f0e8] font-inter placeholder-[#6e6358] transition-colors"
+                      className="w-full bg-[#161616] border border-[rgba(245,240,232,0.1)] focus:border-[var(--cgc-red)] outline-none px-4 py-3 text-[#f5f0e8] font-inter placeholder-[#6e6358] transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="font-cinzel text-[10px] uppercase tracking-[0.3em] text-[#a09888] block mb-2">Email</label>
+                    <label className="font-inter text-[10px] tracking-[0.3em] text-[#a09888] block mb-2">Email</label>
                     <input
                       type="email"
                       value={signupEmail}
                       onChange={e => setSignupEmail(e.target.value)}
                       placeholder="your@email.com"
                       required
-                      className="w-full bg-[#161616] border border-[rgba(245,240,232,0.1)] focus:border-[#c9a84c] outline-none px-4 py-3 text-[#f5f0e8] font-inter placeholder-[#6e6358] transition-colors"
+                      className="w-full bg-[#161616] border border-[rgba(245,240,232,0.1)] focus:border-[var(--cgc-red)] outline-none px-4 py-3 text-[#f5f0e8] font-inter placeholder-[#6e6358] transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="font-cinzel text-[10px] uppercase tracking-[0.3em] text-[#a09888] block mb-2">Password</label>
+                    <label className="font-inter text-[10px] tracking-[0.3em] text-[#a09888] block mb-2">Password</label>
                     <div className="relative">
                       <input
                         type={showPassword ? 'text' : 'password'}
@@ -303,7 +303,7 @@ function AuthContent() {
                         onChange={e => setSignupPassword(e.target.value)}
                         placeholder="••••••••"
                         required
-                        className="w-full bg-[#161616] border border-[rgba(245,240,232,0.1)] focus:border-[#c9a84c] outline-none px-4 py-3 text-[#f5f0e8] font-inter placeholder-[#6e6358] transition-colors pr-12"
+                        className="w-full bg-[#161616] border border-[rgba(245,240,232,0.1)] focus:border-[var(--cgc-red)] outline-none px-4 py-3 text-[#f5f0e8] font-inter placeholder-[#6e6358] transition-colors pr-12"
                       />
                       <button
                         type="button"
@@ -322,7 +322,7 @@ function AuthContent() {
                             i <= getPasswordStrength(signupPassword)
                               ? getPasswordStrength(signupPassword) === 4
                                 ? 'bg-green-500'
-                                : 'bg-[#c9a84c]'
+                                : 'bg-[var(--cgc-red)]'
                               : 'bg-white/[0.1]'
                           }`}
                         />
@@ -330,7 +330,7 @@ function AuthContent() {
                     </div>
                   </div>
                   <div>
-                    <label className="font-cinzel text-[10px] uppercase tracking-[0.3em] text-[#a09888] block mb-2">Confirm Password</label>
+                    <label className="font-inter text-[10px] tracking-[0.3em] text-[#a09888] block mb-2">Confirm Password</label>
                     <div className="relative">
                       <input
                         type={showConfirmPassword ? 'text' : 'password'}
@@ -338,7 +338,7 @@ function AuthContent() {
                         onChange={e => setSignupConfirmPassword(e.target.value)}
                         placeholder="••••••••"
                         required
-                        className="w-full bg-[#161616] border border-[rgba(245,240,232,0.1)] focus:border-[#c9a84c] outline-none px-4 py-3 text-[#f5f0e8] font-inter placeholder-[#6e6358] transition-colors pr-12"
+                        className="w-full bg-[#161616] border border-[rgba(245,240,232,0.1)] focus:border-[var(--cgc-red)] outline-none px-4 py-3 text-[#f5f0e8] font-inter placeholder-[#6e6358] transition-colors pr-12"
                       />
                       <button
                         type="button"
@@ -367,9 +367,9 @@ function AuthContent() {
                       checked={signupTerms}
                       onChange={e => setSignupTerms(e.target.checked)}
                       required
-                      className="mt-1 accent-[#c9a84c]"
+                      className="mt-1 accent-[var(--cgc-red)]"
                     />
-                    <label htmlFor="terms" className="font-cinzel text-[10px] uppercase tracking-[0.2em] text-[#6e6358]">
+                    <label htmlFor="terms" className="font-inter text-[10px] tracking-[0.2em] text-[#6e6358]">
                       I agree to the Terms & Privacy Policy
                     </label>
                   </div>
@@ -389,7 +389,7 @@ function AuthContent() {
                   Already have an account?{' '}
                   <button
                     onClick={() => setIsLogin(true)}
-                    className="text-[#f5f0e8] hover:text-[#c9a84c] transition-colors font-cinzel text-[10px] uppercase tracking-[0.2em]"
+                    className="text-[#f5f0e8] hover:text-[var(--cgc-red)] transition-colors font-inter text-[10px] tracking-[0.2em]"
                   >
                     SIGN IN
                   </button>
@@ -405,7 +405,7 @@ function AuthContent() {
 
 export default function AuthPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#0d0d0d] flex items-center justify-center"><div className="w-8 h-8 border-2 border-[#c9a84c] border-t-transparent rounded-full animate-spin" /></div>}>
+    <Suspense fallback={<div className="min-h-screen bg-[#0d0d0d] flex items-center justify-center"><div className="w-8 h-8 border-2 border-[var(--cgc-red)] border-t-transparent rounded-full animate-spin" /></div>}>
       <AuthContent />
     </Suspense>
   )

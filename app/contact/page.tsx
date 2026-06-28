@@ -24,9 +24,9 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-cgc-black pt-20">
-      <div className="bg-cgc-surface py-16 text-center border-b border-white/5">
-        <p className="font-cinzel text-cgc-red uppercase tracking-[0.4em] text-xs mb-4">Reach Out</p>
+    <div className="min-h-screen bg-cgc-ink pt-20">
+      <div className="bg-cgc-ink py-16 text-center border-b border-white/5">
+        <p className="font-inter text-cgc-red tracking-[0.4em] text-xs mb-4">Reach Out</p>
         <h1 className="section-heading">Get In Touch</h1>
         <div className="red-underline" />
       </div>
@@ -36,7 +36,7 @@ export default function ContactPage() {
           {/* Info */}
           <div className="space-y-8">
             <div>
-              <h2 className="font-cinzel text-2xl text-cgc-white uppercase tracking-widest mb-6">Visit Us</h2>
+              <h2 className="font-inter text-2xl text-cgc-paper mb-6">Visit Us</h2>
               <div className="space-y-4">
                 {[
                   { icon: MapPin, label: 'Address', value: '54 Dunlop Street West, Main Floor, Barrie, ON' },
@@ -49,8 +49,8 @@ export default function ContactPage() {
                       <Icon size={16} className="text-cgc-red" />
                     </div>
                     <div>
-                      <p className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray-2 mb-1">{label}</p>
-                      <p className="text-cgc-white font-inter text-sm">{value}</p>
+                      <p className="font-inter text-xs text-cgc-slate mb-1">{label}</p>
+                      <p className="text-cgc-paper font-inter text-sm">{value}</p>
                     </div>
                   </div>
                 ))}
@@ -59,7 +59,7 @@ export default function ContactPage() {
 
             {/* Social */}
             <div>
-              <h3 className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray-2 mb-4">Follow The Movement</h3>
+              <h3 className="font-inter text-xs text-cgc-slate mb-4">Follow The Movement</h3>
               <div className="flex gap-4">
                 {[
                   { label: 'Instagram', href: 'https://instagram.com/cgclthn' },
@@ -68,7 +68,7 @@ export default function ContactPage() {
                   { label: 'TikTok', href: 'https://tiktok.com' },
                 ].map(s => (
                   <a key={s.label} href={s.href} target="_blank" rel="noreferrer"
-                    className="font-cinzel text-xs uppercase tracking-widest text-cgc-gray-1 hover:text-cgc-white transition-colors border border-white/10 hover:border-cgc-red px-3 py-2">
+                    className="font-inter text-xs text-cgc-slate hover:text-cgc-paper transition-colors border border-white/10 hover:border-cgc-red px-3 py-2">
                     {s.label}
                   </a>
                 ))}
@@ -78,7 +78,7 @@ export default function ContactPage() {
 
           {/* Form */}
           <div>
-            <h2 className="font-cinzel text-2xl text-cgc-white uppercase tracking-widest mb-6">Send A Message</h2>
+            <h2 className="font-inter text-2xl text-cgc-paper mb-6">Send A Message</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               {[
                 { name: 'name', placeholder: 'Your Name', type: 'text' },

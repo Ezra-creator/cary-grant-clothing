@@ -91,18 +91,18 @@ export default function Testimonials() {
   return (
     <section
       ref={containerRef}
-      className="relative bg-cgc-testimonials-bg py-[100px] overflow-hidden"
+      className="relative bg-cgc-paper py-[100px] overflow-hidden"
     >
       {/* Background Decoration */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-        <span className="font-cinzel text-[300px] font-black text-white/5 leading-none select-none">
+        <span className="font-inter text-[300px] font-black text-cgc-ink/5 leading-none select-none">
           CGC
         </span>
       </div>
       <div 
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none z-0"
         style={{
-          background: 'radial-gradient(ellipse at center, rgba(201, 168, 76, 0.06) 0%, transparent 70%)'
+          background: 'radial-gradient(ellipse at center, rgba(227, 6, 19, 0.06) 0%, transparent 70%)'
         }}
       />
 
@@ -110,13 +110,13 @@ export default function Testimonials() {
         
         {/* Header */}
         <AnimatedSection direction="up" delay={0.2} className="flex flex-col items-center text-center mb-16">
-          <span className="font-cinzel text-[10px] text-[#c9a84c] uppercase tracking-[0.5em] mb-4">
+          <span className="font-inter text-sm font-medium text-cgc-red mb-4">
             Community
           </span>
-          <h2 className="font-cinzel text-[40px] md:text-[64px] text-white font-black leading-none uppercase">
-            What They&apos;re Saying
+          <h2 className="font-inter text-[40px] md:text-[64px] text-cgc-ink font-black leading-none">
+            What they&apos;re saying
           </h2>
-          <div className="w-[60px] h-[2px] bg-[#c9a84c] mt-6" />
+          <div className="w-[60px] h-[2px] bg-cgc-red mt-6" />
         </AnimatedSection>
 
         {/* Carousel */}
@@ -141,40 +141,40 @@ export default function Testimonials() {
               {visibleTestimonials.map((t, idx) => (
                 <div 
                   key={`${currentIndex}-${idx}`} 
-                  className="bg-cgc-surface-2 p-8 flex flex-col justify-between h-full transition-all duration-300 group"
+                  className="bg-cgc-bone p-8 flex flex-col justify-between h-full transition-all duration-300 group shadow-sm rounded-cgc-lg"
                   style={{ 
-                    borderTop: '3px solid #c9a84c',
+                    borderTop: '3px solid var(--cgc-red)',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderTopColor = '#e2c06e';
-                    e.currentTarget.style.boxShadow = '0 -4px 20px rgba(201, 168, 76, 0.2)';
+                    e.currentTarget.style.borderTopColor = '#b91c1c';
+                    e.currentTarget.style.boxShadow = '0 -4px 20px rgba(227, 6, 19, 0.2)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderTopColor = '#c9a84c';
-                    e.currentTarget.style.boxShadow = 'none';
+                    e.currentTarget.style.borderTopColor = 'var(--cgc-red)';
+                    e.currentTarget.style.boxShadow = 'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)';
                   }}
                 >
                   <div>
-                    <div className="font-cinzel text-[60px] text-[#c9a84c]/30 leading-[0] mb-[-10px] mt-4">
+                    <div className="font-inter text-[60px] text-cgc-red/30 leading-[0] mb-[-10px] mt-4">
                       &ldquo;
                     </div>
-                    <p className="font-inter text-[15px] text-white/80 italic leading-[1.8]">
+                    <p className="font-inter text-[15px] text-cgc-slate italic leading-[1.8]">
                       {t.quote}
                     </p>
-                    <div className="w-[40px] h-[1px] bg-[#c9a84c] my-6" />
+                    <div className="w-[40px] h-[1px] bg-cgc-red my-6" />
                   </div>
                   
                   <div className="flex items-center justify-between mt-auto">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-cgc-surface" />
+                      <div className="w-12 h-12 rounded-full bg-cgc-paper border border-cgc-ink/5" />
                       <div className="flex flex-col">
-                        <span className="font-cinzel text-[12px] text-white uppercase">{t.name}</span>
-                        <span className="font-inter text-[11px] text-cgc-gray-1">{t.location}</span>
+                        <span className="font-inter text-[12px] text-cgc-ink font-medium">{t.name}</span>
+                        <span className="font-inter text-[11px] text-cgc-slate">{t.location}</span>
                       </div>
                     </div>
                     <div className="flex gap-1">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={14} className="fill-[#c9a84c] text-[#c9a84c]" />
+                        <Star key={i} size={14} className="fill-[var(--cgc-red)] text-[var(--cgc-red)]" />
                       ))}
                     </div>
                   </div>
@@ -195,14 +195,14 @@ export default function Testimonials() {
           <div className="flex items-center gap-4">
             <button
               onClick={prev}
-              className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-[#c9a84c] hover:bg-[#c9a84c]/10 transition-all duration-300 group"
+              className="w-12 h-12 rounded-full border border-cgc-ink/20 flex items-center justify-center text-cgc-ink hover:border-[var(--cgc-red)] hover:bg-[var(--cgc-red)]/10 transition-all duration-300 group"
               aria-label="Previous testimonial"
             >
               <ChevronLeft size={18} className="group-hover:-translate-x-0.5 transition-transform" />
             </button>
             <button
               onClick={next}
-              className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-[#c9a84c] hover:bg-[#c9a84c]/10 transition-all duration-300 group"
+              className="w-12 h-12 rounded-full border border-cgc-ink/20 flex items-center justify-center text-cgc-ink hover:border-[var(--cgc-red)] hover:bg-[var(--cgc-red)]/10 transition-all duration-300 group"
               aria-label="Next testimonial"
             >
               <ChevronRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
@@ -219,7 +219,7 @@ export default function Testimonials() {
                   setCurrentIndex(i);
                 }}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === currentIndex ? 'w-6 bg-[#c9a84c]' : 'w-1.5 bg-white/20 hover:bg-white/40'
+                  i === currentIndex ? 'w-6 bg-cgc-red' : 'w-1.5 bg-cgc-ink/20 hover:bg-cgc-ink/40'
                 }`}
                 aria-label={`Go to testimonial ${i + 1}`}
               />
